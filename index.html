@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <pre><code class="language-javascript">
+    <pre class="line-numbers"><code class="language-javascript">
 // --------------------------------------------------
 // JavaScript Basics for Beginners
 
@@ -9743,7 +9743,7 @@ const self = this;
 
 // --------------------------------------------------
 
-Object Oriented Programming in JavaScript
+// Object Oriented Programming In Javascript
 
 // --------------------------------------------------
 // 1.1 Getting Started - What is OOP
@@ -10091,11 +10091,6 @@ element.render();
 
 
 
-
-
-// --------------------------------------------------
-
-Object Oriented Programming In Javascript
 
 // --------------------------------------------------
 // 2.1 Objects - Introduction
@@ -13651,7 +13646,7 @@ sw.duration = 10;
 
 
 // --------------------------------------------------
-// 4.1 Prototypal Inheritance - Creating Your Own Prototypical Inheritance
+// 4.1 Prototypical Inheritance - Creating Your Own Prototypical Inheritance
 
 // so here we have a circle object 
 // with a radius property 
@@ -13911,7 +13906,7 @@ const c = new Circle(1);
 
 
 // --------------------------------------------------
-// 4.2 Prototypal Inheritance - Resetting the Constructor
+// 4.2 Prototypical Inheritance - Resetting the Constructor
 
 // now there's a tiny problem with this implementation 
 // let me comment out this line 
@@ -14138,7 +14133,7 @@ Circle.prototype.constructor(1)
 
 
 // --------------------------------------------------
-// 4.3 Prototypal Inheritance - Calling the Super Constructor
+// 4.3 Prototypical Inheritance - Calling the Super Constructor
 
 // alright now let's take this example to the next level 
 
@@ -14324,7 +14319,7 @@ console.log(c);
 
 
 // --------------------------------------------------
-// 4.4 Prototypal Inheritance - Intermediate Function Inheritance
+// 4.4 Prototypical Inheritance - Intermediate Function Inheritance
 
 // so we have set up our inheritance chain properly 
 
@@ -14487,7 +14482,7 @@ sq.duplicate();
 
 
 // --------------------------------------------------
-// 4.5 Prototypal Inheritance - Method Overriding
+// 4.5 Prototypical Inheritance - Method Overriding
 
 // I have simplified the code from the last lecture 
 // so we can focus on one concept
@@ -14670,7 +14665,7 @@ c.duplicate();
 
 
 // --------------------------------------------------
-// 4.6 Prototypal Inheritance - Polymorphism
+// 4.6 Prototypical Inheritance - Polymorphism
 
 // so in the last lecture you learn about METHOD OVERRIDING 
 // WHICH BASICALLY MEANS RE-IMPLEMENTING A METHOD IN A CHILD OBJECT 
@@ -14853,103 +14848,125 @@ for (let shape of shapes)
 
 
 // --------------------------------------------------
-// 4.7 Prototypal Inheritance - When To Use Inheritance
+// 4.7 Prototypical Inheritance - When To Use Inheritance
 
 // so you have seen inheritance and polymorphism in action 
-// while inheritance is a great tool for solving the problem of code reuse
-// you have to be really careful about using it because 
-// it can make your source code complex and fragile 
 
-// so don't use inheritance just for the sake of using it 
+// while inheritance is a great tool for solving the problem of code reuse
+
+// YOU HAVE TO BE REALLY CAREFUL ABOUT USING IT 
+// BECAUSE IT CAN MAKE YOUR SOURCE CODE COMPLEX AND FRAGILE 
+
+// so DON'T USE INHERITANCE JUST FOR THE SAKE OF USING IT 
 // especially in small projects 
 
 // as I've always emphasized in all my courses 
-// keep it simple and stupid 
+// KEEP IT SIMPLE AND STUPID 
 
 // start with simple objects 
-// and then if you see a number of these objects share similar features 
-// then perhaps you can encapsulate those features inside of a generic object 
-// and use inheritance 
+// and then IF YOU SEE A NUMBER OF THESE OBJECTS SHARE SIMILAR FEATURES 
+// THEN PERHAPS YOU CAN ENCAPSULATE THOSE FEATURES INSIDE OF A GENERIC OBJECT 
+// AND USE INHERITANCE 
 
-// but remember inheritance is not the only solution 
-// to enable code reuse there is another technique called composition 
+// but remember INHERITANCE IS NOT THE ONLY SOLUTION 
+// TO ENABLE CODE REUSE 
+// there is another technique called COMPOSITION 
 
 // which you're going to learn about soon 
 
-// so let's see the problem with inheritance 
+// so LET'S SEE THE PROBLEM WITH INHERITANCE 
 
 // here we have this animal object with two methods eat and walk 
 // and we have two objects that derive from animal 
 // person and dog 
 
+//          ..>  [ Animal ]
+//         /         ^    eat()
+//        /          |    walk()
+//       /           |
+//  [ Person ]    [ Dog ]
+
 // now tomorrow we're gonna introduce a new object called goldfish 
 // that derives from animal 
 
 // our hierarchy is broken why because goldfish cannot walk 
-// it can swim 
-
+// it can swim
 // so we got the hierarchy wrong and this is something that happens quite
-// often especially amongst inexperienced developers 
+// often especially amongst inexperienced developers
+
+//          ..>  [ Animal ]    <....
+//         /         ^    eat()     \
+//        /          |    walk()     \
+//       /           |                \
+//  [ Person ]    [ Dog ]        [ Goldfish ]
 
 // so to solve this problem we need to change our hierarchy 
 
 // on the top we should have the animal object with the eat method 
 // under that we're gonna have two objects mammal and fish 
-
-// mammals can walk 
-// fish can swim 
-
+// mammals can walk, fish can swim 
 // and then we can have person and dog derive from mammal
-// and goldfish derive from fish 
+// and goldfish derive from fish
 
-// see what happened as a result of introducing a new kind of animal 
+//                  ..> [ Animal ] <.
+//                 /        eat()    \
+//                |                  |
+//          [ Mammal ]            [ Fish ]
+//        /   walk() |               | swim()
+//       /           |               |
+//  [ Person ]    [ Dog ]        [ Goldfish ]
+
+// see what happened 
+// as a result of introducing a new kind of animal 
 // that is goldfish 
 
-// we had to change our hierarchy and now this hierarchy 
-// is more complex than what we had before
+// we had to change our hierarchy 
+// and now this hierarchy is more complex than what we had before
 
 // now what would happen if we had ten different types of animals 
 // this hierarchy would get more and more complex 
 // and we have to constantly go back and forth to determine 
 // the right place to implement a method 
 
-// so avoid creating inheritance hierarchies because
-// they are very fragile 
+// so 
+// AVOID CREATING INHERITANCE HIERARCHIES 
+// because they are very fragile 
 
-// if you want to use inheritance keep to one level 
-// do not go more than one level of inheritance 
+// IF YOU WANT TO USE INHERITANCE KEEP TO ONE LEVEL 
+// DO NOT GO MORE THAN ONE LEVEL OF INHERITANCE 
 
 // there is a famous saying that says 
-// "favour composition over inheritance" 
+// "FAVOUR COMPOSITION OVER INHERITANCE" 
 
-// with composition instead of having a complex hierarchy like this 
-// we can compose a few objects together to create a new object 
+// with composition instead of having a complex hierarchy like this (above) 
+
+// we can compose a few objects together 
+// to create a new object 
 // and this technique gives us great flexibility 
 
 // so back to our previous example 
-// instead of using inheritance we can define various features 
-// for our animals as independent objects 
+// instead of using inheritance 
+// we can define various features for our animals as independent objects 
 
 // so we can have three objects like 
-// can walk 
-// can eat 
-// and 
-// can swim each
+// canWalk 
+// canEat 
+// canSwim 
 
-// each of these objects are plain JavaScript 
+// each of these objects are plain JavaScript objects 
+// with certain properties and methods 
 
-// objects with certain properties and methods 
 // now we want to have a person object 
-// okay we simply compose can walk and can eat to create a person object
+// okay, we simply compose canWalk and canEat to create a person object
 
 // tomorrow we want to introduce a goldfish 
-// awesome we can compose can eat and can swim together 
+// awesome, we can compose canEat and canSwim together 
 // to produce a goldfish 
 
 // so we don't have a hierarchy and we can come up with 
-// any combination of these objects to create new objects in JavaScript 
+// any combination of these objects to create new objects 
 
-// we can use mix-ins to achieve composition 
+// in JavaScript we can use Mix-Ins to achieve composition 
 // and that's what you're gonna see in the next lecture
     </code></pre>
     <script src=prism.js></script>
