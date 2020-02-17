@@ -9742,6 +9742,5215 @@ const self = this;
 
 
 // --------------------------------------------------
+
+Object Oriented Programming in JavaScript
+
+// --------------------------------------------------
+// 1.1 Getting Started - What is OOP
+
+// So what is object oriented programming 
+
+// object oriented programming is a programming paradigm or style of programming 
+// that is centered around objects rather than function 
+
+// it's nothing new it's been around since the seventies 
+// but unlike tools and frameworks that come and go 
+// object oriented programming is still very relevant today 
+
+// that's because it's not a programming language or a tool 
+
+// it's a style of programming or a programming paradigm 
+
+// there are several programming languages out there the support object oriented programming 
+// such as C# Java Ruby Python Javascript and more 
+// now Java script is a little bit controversial but I'll get to that later 
+
+// it may interest you to know that many of the popular frameworks out there 
+// that you might be using are actually designed what object oriented programming concepts in mind 
+// Angular is an example of these frameworks 
+
+// so object oriented programming is a very popular style of programming 
+// and it comes up in many technical interviews 
+
+// so if you really want to be a serious developer 
+// you need to understand object oriented programming 
+
+// as a technical interviewer myself if I see a candidate with object oriented programming 
+// on the resume that candidate stands out to me 
+
+// and that's where this crash course comes in 
+
+// in this course you're going to learn and understand object oriented principles 
+// and how to implement them in Javascript 
+
+// my name is Mosh Hamedani and I'm going to be instructor in this course 
+// if you enjoyed this video please like and share it with others 
+// and be sure to subscribe to my channel for new videos every week 
+// you can also follow me on Twitter as March. So now let's get started. 
+
+
+
+
+// --------------------------------------------------
+// 1.2 Getting Started - Four Pillars of OOP
+
+// A popular interview question concerns the 4 core concept in object oriented programming 
+// this concepts are encapsulation abstraction inheritance and polymorphism 
+// let's look at each of these concepts 
+
+// before object oriented programming we had procedural programming 
+// that divided the program into a sort of functions so we have data stored 
+// in a bunch of variables and functions that operate on the data 
+// this style of programming is very simple and straightforward 
+// often it's what you learn as part of your first programming subject at a university 
+// but as your programs grow you'll end up with a bunch of functions that are all over the place 
+// you would find yourself copying and pasting lines of code over and over 
+// you make a change to one function and then several other functions break 
+// that's what we call the spaghetti code
+// there's so much interdependency between all these functions it becomes problematic
+
+// object oriented programming came to solve this problem 
+// in object oriented programming we combined group of related variables and functions into a unit 
+
+// we call that unit an object 
+// we refer to this variables as properties 
+// and the functions as methods
+
+// here's an example 
+// think of a car 
+// a car is an object with properties such as make model and color 
+// and methods like start stop and move 
+
+// now you might say but Mosh we don't have cars in our programs give me a real programming example
+// okay think of the local storage object your browser's 
+// every browser as a local storage object that allows you to store data locally 
+// this local storage object has a property like length 
+// which returns the number of objects in the storage 
+// and methods like set item and remove item. 
+
+// So an object oriented programming 
+// we group related variables and functions that operate on them into objects 
+// and this is what we called ENCAPSULATION 
+
+// let me show you an example of this in action 
+
+let baseSalary = 30000;
+let overtime = 10;
+let rate = 20;
+
+function getWage(baseSalary, overtime, rate) {
+    return baseSalary + (overTime * rate);
+}
+
+// so here we have 3 variables base salary over time and rates 
+// below these we have a function to calculate the wage for an employee 
+// we refer to this kind of implementation as PROCEDURAL 
+
+// so we have variables on one side and functions on the other side they are DECOUPLED. 
+
+// Now let's take a look at the object oriented way to solve this problem 
+
+let employee = {
+    baseSalary: 30000,
+    overtime: 10,
+    rate: 20,
+    getWage: function () {
+        return this.baseSalary + (this.overtime * this.rate);
+    }
+};
+
+// we can have an employee object with 3 properties 
+// base salary, overTime and rate 
+// and the method called getWage 
+// now why is this better? 
+// well first of all look at the getWage function 
+// this function has no parameters 
+
+// in contrast in a procedural example 
+// our getWage function has 3 parameters 
+
+// the reason in this implementation we don't have any parameters 
+// is because all these parameters are actually modeled as properties of this object 
+
+// all these properties and the getWage function they are highly related 
+// so they're part of one unit 
+
+// so one of the symptoms of procedurual code is functions with so many parameters 
+// when you write code in object oriented way 
+// your functions end up having fewer and fewer parameters 
+// as uncle Bob (Robert C Martin) says "the best functions are those with no parameters"
+// the fewer the number of parameters the easier it is to use and maintain that function 
+// so that's ENCAPSULATION 
+
+
+// now let's look at ABSTRACTION 
+// think of a DVD player as an object 
+// this DVD player has a complex logic board on the inside 
+// and a few buttons on the outside that you interact with 
+
+// you simply press the play button and you don't care what happens on the inside 
+// all the complexity is hidden from you this is ABSTRACTION in practice 
+
+// we can use the same technique in our objects 
+// so we can hide some of the properties and methods from the outside 
+// and this gives us a couple of benefits 
+
+// first is that we'll make the interface of those objects simpler 
+// using an understanding an object with a few properties and methods 
+// is easier than an object with several properties and methods 
+
+// the second benefit is that it helps us reduce the impact of change 
+// let's imagine that tomorrow we change these inner or private methods 
+// none of these changes will lead to the outside. 
+
+// Because we don't have any code that touches these methods outside of their containing object 
+// you may delete a method or change its parameters 
+// but none of these changes will impact the rest of the applications code 
+// so with ABSTRACTION we reduce the impact of change 
+
+
+// now the third core concept in object oriented programming INHERITANCE
+// inheritcance is a mechanism that allows you to eliminate redundant code
+
+// here's an example 
+// think of HTML elements like text boxes, drop down lists, checkboxes, and so on 
+// all these elements have a few things in common 
+// they should have properties like hidden and innerHTML 
+// and methods like click and focus 
+
+// instead of redefining all these properties and methods for every type of HTML element 
+
+// we can define them once in a generic object call it HTMLElements 
+// and help other objects inherit these properties and methods 
+
+// so INHERITANCE HELPS US ELIMINATE REDUNDANT CODE.
+
+// And finally POLYMORPHISM. 
+// Poly means many 
+// Morph means form 
+// So polymorphism means many forms 
+// IN OBJECT ORIENTED PROGRAMMING POLYMORPHISM IS A TECHNIQUE THAT ALLOWS YOU 
+// TO GET RID OF LONG if and else or switch and case STATEMENTS 
+
+// so back to our HTML elements example 
+// all these objects should have the ability to be rendered on the page 
+// but the way each element is rendered is different from the others 
+
+// if you want to render multiple HTML elements in a procedural way 
+// our code would probably look like this 
+
+// switch (...) {
+//     case 'select': renderSelect();
+//     case 'text': renderTextBox();
+//     case 'checkbox': renderCheckBox();
+//     case ...
+//     case ...
+//     case ...
+// }
+
+// but with object orientation you can implement a render method in each of these objects 
+// and the render method will behave differently depending on the type of the object we are referencing. 
+
+// So we can get rid of this nasty switch and case 
+// and use one line of code like this 
+
+element.render();
+
+// you'll see that later in the course 
+
+// so here are the benefits of object oriented programming 
+
+// using ENCAPSULATION we group related variables and functions together 
+// and this way we can reduce complexity. 
+// Now we can reuse these objects in different parts of the program or in different programs 
+
+// with ABSTRACTION we hide the details and the complexity and show only the essentials 
+// this technique reduces complexity and also isolates the impact of changes in the code. 
+
+// With INHERITANCE  we can eliminate redundant code 
+
+// and with POLYMORPHISM we can refactor ugly switch case statements.
+
+
+
+
+// --------------------------------------------------
+// 1.3 Getting Started - Setting Up The Developement Environment
+
+// To go through this course all you need is a code editor 
+// and a simple web server
+// the editor that I'm gonna use here is Visual Studio code or VScode 
+// that you can download from code that visualstudio.com
+// but feel free to use any editors
+
+// now with VSCode we have this extensions panel here
+// search for live server
+// this is a very simple and lightweight server
+// that we're going to use to serve our application 
+// so install is and then here in the files panel 
+
+// let's add a new file index.html n
+// ow to generate some basic HTML template we can simply type
+// an exclamation mark and press tab 
+// so a  very basic HTML template 
+// now let's add a script element so script with source set
+// to index.JavaScript
+// we're going to write all our JavaScript code inside of this file 
+// so let's add a new file and save it as index.js
+// and finally to make sure that we have setup everything properly
+// let's do a console that log of hello world 
+
+// now when you install live server you should get this menu here 
+// in the status bar 
+// if you don't see that you'll probably have to restart vs code 
+// and if you still don't see it simply right click on index.html 
+// and select open with live server
+
+// so this will fire up Chrome pointing to this address 
+// now let's open up Chrome developer tools 
+// here in the console tab we've got hello world 
+
+// so before going any further I want to emphasize that
+// this course is not for beginners is for intermediate level 
+// developers so you should have at least three months of experience 
+// programming in JavaScript 
+
+// you should know the basics 
+// you should know how to use Chrome developer tools 
+
+// 'm not gonna cover these in this course our focus 
+// is purely on object oriented programming with JavaScript
+
+
+
+
+// --------------------------------------------------
+// 1.4 Getting Started - Course Structure
+
+// alright before we start our journey 
+// let me explain how I've structured this course 
+// so you get the most out of it 
+// in the next section we're going to look at 
+// Objects in JavaScript 
+
+// now chances are you're familiar with some of the concepts 
+// that I'm going to explain but please be patient 
+// make sure to watch every lecture 
+
+// because we're gonna get really deep 
+// to make sure you have an in-depth understanding of objects
+// because OBJECTS ARE THE FOUNDATION OF OBJECT ORIENTED PROGRAMMING
+
+// over the next two sections we'll look at PROTOTYPES and PROTOTYPICAL INHERITANCE 
+
+// these are some of the complex parts of JavaScript that a lot of developers 
+// find confusing so over these two sections I'm gonna make it super simple for you
+
+// next we will look at CLASSES in ES6 which stands for ECMAScript6 
+// now if you don't know what is ECMAScript
+// ECMAScript is a specification developed by ECMA which is an organization 
+// that defines standards for technologies 
+
+// so EMCA as an organization has developed ECMAScript which is a specification 
+// now Javascript is a programming language that conforms to the ECMAScript specification 
+// now starting from year 2015 ECMA started to enhance JavaScript 
+// so this specification that came out in year 2015 is referred to as EMCAScript 2015 
+// or ECMA Script Version 6
+
+// now in this specification we have some new features
+// in JavaScript one of them is CLASSES 
+// but classes that we have in JavaScript are not like classes we have in languages
+// like C sharp or Java because javascript is a dynamically typed language 
+
+// so classes are essentially syntactic sugar over prototypes and prototypical inheritance 
+
+// so that's why we have two sections on these topics in the course
+
+// once you master these, then we'll look at ES6 classes in section 5 
+
+// and finally we'll finish this course by looking at MODULES
+
+// so this is the outline now I want to clarify something here in this
+// course unlike my other courses we're not going to build a real application
+// because building a real application requires me to talk various topics 
+// such as building the user interface or the client app 
+// then building apis, working with the database, deployment and so on 
+
+// all these are distraction from the core of this course that is object-oriented programming 
+
+// so I wanted to create a short and sweet course for you 
+// to teach you object-oriented programming in JavaScript 
+
+// that's why we're not going to build a real application 
+// but to help you master the concepts that you're going to learn 
+// in each section I have designed one or two exercises 
+// so make sure to spend some time doing these exercises
+// and you can also see my solution 
+
+// with all that let's get started
+
+
+
+
+
+// --------------------------------------------------
+
+Object Oriented Programming In Javascript
+
+// --------------------------------------------------
+// 2.1 Objects - Introduction
+
+// Javascript is all about objects 
+
+// so in order to learn object oriented programming 
+// first you need to have a good understanding of objects 
+
+// so in this section I'm gonna cover some fundamental concepts around objects 
+// such as creating objects 
+// factories and constructors 
+// primitives and reference types and how they behave differently 
+
+// working with the properties of an object 
+// such as adding removing properties as well as enumerating them 
+
+// we're also going to learn how to define private properties 
+
+// as well as getters and setters
+
+// if you know all these topics well 
+// feel free to skip this section and move to the next section 
+// where I talk about prototypes 
+// otherwise continue watching 
+
+// so now let's get started. 
+
+// CREATING OBJECTS
+// FACTORIES AND CONSTRUCTORS
+// PRIMITIVES AND REFERENCE TYPES
+// WORKING WITH PROPERTIES
+// PRIVATE PROPERTIES
+// GETTERS / SETTERS
+
+
+
+
+// --------------------------------------------------
+// 2.2 Objects - Object Literals
+
+// let's start this section by creating an object
+
+// so I'm gonna use the let keyword in ES6 
+// which is the replacement for var 
+// so in ES5 and before we had var for declaring variables 
+// but var has a number of issues when it comes to scoping
+// that's beyond the scope of this course 
+
+// I just want to let you know that as a best practice stop using var 
+// use either let or const 
+
+// with const you're basically defining a constant 
+// so you won't be able to reassign it 
+// if you want to reassign a variable use let
+
+// now in this demo I'm gonna use const to define a constant 
+// so let's call this circle and set it to an object 
+
+// here I'm using OBJECT LITERAL SYNTAX
+
+const circle = {};
+
+// so these curly braces we refer to them as object literal syntax 
+// AN OBJECT IN JAVASCRIPT IS ESSENTIALLY A COLLECTION OF KEY VALUE PAIRS 
+
+// so inside these curly braces I'm gonna add a few key value pairs 
+
+// let's add radius and set it to 1 let's add another key like location 
+
+const circle = {
+    radius: 1,
+};
+
+// now this time the value can be an object so again I'm using object
+// literal syntax 
+
+// in this object we can have a couple key value pairs like x and y
+
+const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+};
+
+// let's add another key value pair 
+// so the keys draw 
+// the value is a function that is for drawing the circle 
+// so for now let's just do a simple console.log 
+
+const circle = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function () {
+        console.log('draw');
+    }
+};
+
+
+// now I want to define a few terms here 
+// this circle object has three members 
+// radius location and draw 
+// IF A MEMBER IS A FUNCTION WE REFER TO THAT AS A METHOD
+// so here we say draw is a method 
+// THESE OTHER MEMBERS ARE WHAT WE CALL PROPERTIES 
+
+// now in some JavaScript tutorials that refer to all these members as properties 
+// whether there are functions or not
+
+// but technically in object-oriented programming 
+// PROPERTIES AND METHODS ARE FUNDAMENTALLY DIFFERENT 
+// because A PROPERTY IS USED TO HOLD VALUES 
+// A FUNCTION OR A METHOD IS USED TO DEFINE SOME LOGIC
+
+// so now that we have this circle object 
+// we can access its members using the dot notation 
+// so circle. 
+// look here are the members we can call the draw method
+
+// now note here on the right side 
+// I've got Chrome open this is Chrome developer tools 
+// as soon as I save my changes here you will see that chrome is gonna refresh 
+// because here with live server
+// we have hot reloading 
+// so save and here's the result
+// so as soon as we change our code the new code is loaded inside Chrome 
+
+// so OBJECT LITERAL IS A SIMPLE WAY TO DEFINE AN OBJECT 
+// but we can also define objects using factories and constructors 
+// and that's the topic for the next lecture
+
+
+
+
+// --------------------------------------------------
+// 2.3 Objects - Factories
+
+// all right now let's imagine we want to create another circle 
+// with the current implementation we have to duplicate all this code like this 
+
+const circle1 = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function () {
+        console.log('draw');
+    }
+};
+
+const circle2 = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+    draw: function () {
+        console.log('draw');
+    }
+};
+
+// now this can be a problem if we have one or more methods in our object 
+
+// in this case we have this draw method here 
+// and as you can see we have duplicated that in two different places 
+// so if there is a bug in this method 
+// we have to come back and fix it in multiple places 
+
+// now this is a very simple object 
+// imagine if the circle object had ten methods 
+
+// SO OBJECT LITERAL SYNTAX IS NOT A GOOD WAY TO CREATE AN OBJECT 
+// AND DUPLICATE IT IF THIS OBJECT HAS AT LEAST ONE METHOD 
+// IF AN OBJECT HAS ONE OR MORE METHODS WE SAY THAT OBJECT HAS BEHAVIOR 
+// like a person that can do different things so it has behavior now 
+
+// let's imagine here we didn't have this draw method 
+// duplicating this object wouldn't be a big deal 
+
+// so basically we would end up with two objects 
+// and then here we could use different values 
+
+const circle1 = {
+    radius: 1,
+    location: {
+        x: 1,
+        y: 1
+    },
+};
+
+const circle2 = {
+    radius: 2,
+    location: {
+        x: 2,
+        y: 2
+    },
+};
+
+// so CREATING OBJECTS WITH THE OBJECT LITERAL SYNTAX 
+// IS AN ISSUE ONLY IF THAT OBJECT HAS BEHAVIOR 
+
+// so what's the solution?
+// THE SOLUTION IS TO USE A FACTORY OR A CONSTRUCTOR FUNCTION 
+
+// so let me show you how that works 
+
+// I'm going to delete this second circle 
+// and define a function called create circle 
+
+// now I'm gonna move all this code inside this new function like this 
+// now we don't need to declare a constant we can simply return this object 
+
+function createCircle() {
+    return {
+        radius: 1,
+        location: {
+            x: 1,
+            y: 1
+        },
+    };
+}
+
+// now this circle requires a radius so instead of hard-coding one here 
+// I'm gonna add a parameter here radius and then set that here 
+
+function createCircle() {
+    return {
+        radius: radius,
+        location: {
+            x: 1,
+            y: 1
+        },
+    };
+}
+
+// now in es6 we have this new feature 
+// so if the key and the value are the same 
+// we can remove the noise in the code by removing the value 
+// so we can only add radius
+
+function createCircle() {
+    return {
+        radius,
+        location: {
+            x: 1,
+            y: 1
+        },
+    };
+}
+
+
+// now to simplify the code 
+// so you can focus on what I'm gonna teach you 
+// I'm gonna drop this location property we don't really need it 
+// instead I'm gonna add our draw method 
+// so key value 
+// and let's do a simple console.log draw
+
+function createCircle() {
+    return {
+        radius,
+        draw: function () {
+            console.log('draw');
+        }
+    };
+}
+
+// okay so THIS IS WHAT WE CALL A FACTORY FUNCTION 
+
+// now we can simply call this function to create a new circle 
+// so constant circle we call create circle and pass one as the radius
+
+function createCircle() {
+    return {
+        radius,
+        draw: function () {
+            console.log('draw');
+        }
+    };
+}
+
+const circle = createCircle(1);
+circle.draw();
+
+
+
+
+// --------------------------------------------------
+// 2.4 Objects - Constructors
+
+// now there is ANOTHER WAY TO CREATE AN OBJECT 
+// USING A CONSTRUCTOR FUNCTION 
+
+// so let's delete circle draw and define a constructor function 
+
+// I want you to see them side by side 
+// so once again we define a function 
+// but the naming convention we use for a constructor function is different 
+// the first letter should be uppercase so we call it circle with an uppercase C 
+
+// the developers with background in languages like C sharp and Java 
+// this kind of looks like a class however as you can see we're defining a function 
+// in JavaScript we don't have the concept of classes 
+
+function Circle();
+
+// so our circle function is gonna take a radius parameter 
+
+function Circle(radius) {
+
+}
+
+// but in the body instead of returning an object 
+// we're gonna use that "this" keyword to set the properties of this object
+
+// what is "this"
+// "this" is basically a reference to the object that is executing this piece of code
+
+// you're gonna see that in a second 
+
+// so imagine we have a new empty object in memory
+// now we're gonna use this to reference that object 
+// and then use dot notation to set various properties on that object
+
+// so we can set the radius property to this radius argument 
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+// similarly we can define another property draw 
+// but this is more accurately a method 
+// so we set it to a function 
+// and here we do a console.log of draw 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+
+// okay now we can create a new circle like this 
+
+// we use the "new" operator to call the circle function and pass 1 as the argument 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+
+const another = new Circle(1);
+
+// when me use the "new" operator 
+// a few things happen under the hood 
+// this "new" operator will create an empty object so like this {}
+// an empty object 
+
+// then it will set "this" to point to that object {}
+
+// because by default this point to the global object 
+// if you're running this code inside of a browser the global object is the window
+// object if you're running it inside a node environment the global object is global 
+
+// let me show you so I'm gonna do a console.log of "this" 
+// let's see what happens so save the changes 
+
+function Circle(radius) {
+    console.log('this', this)
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+
+const another = new Circle(1);
+// output:
+// this Circle {}
+
+// now look this is this circle object here and here
+// we have two members draw and radius this is because we use the new operator here
+
+// if I remove that let's see what happens 
+// so save the changes 
+
+function Circle(radius) {
+    console.log('this', this)
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+
+const another = Circle(1);
+// output:
+// this <ref *1> Object [global] {
+// ...
+//   }
+
+// now "this" references the window object 
+// so this is the global object in a browser 
+
+// we don't want to use this 
+// we don't want to mess up with this 
+// we don't want to define global variables because they're bad practice 
+// because they're available everywhere in our application 
+// so it is possible that one function or another 
+// will modify the value of these variables accidentally
+// and create bug in our application 
+
+// so WHEN WE USE THE "new" OPERATOR TO CALL A FUNCTION THREE THINGS HAPPEN 
+
+// FIRST THIS "new" OPERATOR WILL CREATE AN EMPTY OBJECT 
+// THEN IT WILL SET "this" TO POINT TO THAT OBJECT 
+// AND FINALLY IT WILL RETURN THAT OBJECT FROM THIS FUNCTIOn (Circle)
+
+// so note that here we don't have an explicit return statement 
+// (at the end of the function code block)
+// you're not returning this 
+// this will happen automatically when we use the "new" operator 
+
+// so let me delete this 
+// also we don't need console.log here
+
+// so basically WE HAVE TWO WAYS TO CREATE AN OBJECT 
+// WE CAN USE A FACTORY FUNCTION OR A CONSTRUCTOR FUNCTION
+
+// FACTORY FUNCTION
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function () {
+            console.log('draw');
+        }
+    };
+}
+const circle = createCircle(1);
+
+// CONSTRUCTOR FUNCTION
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+const another = new Circle(1);
+
+// there is nothing special about this 
+// they're both regular functions in JavaScript 
+
+// IF WE RETURN AN OBJECT IN THIS FUNCTION 
+// WE REFER TO THAT FUNCTION AS A FACTORY FUNCTION 
+
+// in contrast 
+
+// IF WE USE THAT THIS KEYWORD ALONG WITH THE "new" OPERATOR 
+// WE REFER TO THAT FUNCTION AS A CONSTRUCTOR FUNCTION 
+
+// now you might ask what is the difference between these two patterns for creating an object 
+
+// which approach should you use?
+// well it really depends who you ask 
+// developers coming from languages like C sharp and Java prefer the constructor function syntax 
+// because this looks like creating an instance of a class 
+// but once again in JavaScript we don't really have classes
+
+// other developers don't like this approach 
+// they prefer to use Factory functions 
+// and one of their arguments is what if a developer forgets to use the new operator here 
+// then we are defining these property methods on the global object 
+// which is in this case the window object 
+
+// but this discussion, this argument is really outdated with the modern JavaScript 
+// and the tools that are available to us, we get an error if we forget to use the new operator here 
+// so my suggestion to you is not to get hung up on these religious arguments about 
+// factories versus constructors 
+
+// as a developer you should be familiar with both these patterns 
+// because as you work on different projects and different teams 
+// you will see both of these patterns for creating an object 
+// so you should understand how they work 
+// choose the pattern that you prefer
+
+
+
+
+// --------------------------------------------------
+// 2.5 Objects - Constructor Property
+
+// Every object in JavaScript has a property called constructor 
+// and that references the function that was used to construct or create that object 
+
+// so here we have two objects circle and another 
+
+// FACTORY FUNCTION
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function () {
+            console.log('draw');
+        }
+    };
+}
+const circle = createCircle(1);
+
+// CONSTRUCTOR FUNCTION
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+const another = new Circle(1);
+
+// let's look at the constructor property 
+// so here on the console 
+
+another.constructor;
+
+console.log(another.constructor);
+// output:
+// [Function: Circle]
+
+// so as you see this returns our circle function 
+// that we use to create this object 
+
+// now let's look at 
+
+circle.constructor;
+
+console.log(circle.constructor);
+// output:
+// [Function: Object]
+
+// what is this well you can tell that this is a function 
+// because here we have this blue f
+// and as you can see the first letter of this function is uppercase 
+// so this is a built-in constructor function in JavaScript 
+
+// when we create an object using the object literal syntax 
+// internally the JavaScript engine uses this constructor function
+
+// let me show you 
+// so I'm going to temporarily delete all this code 
+
+// let's define an object like this
+
+let x = {};
+
+// when we use this syntax object literal 
+// JavaScript engine will translate that to something like this 
+
+// let x = new Object();
+
+// so this circle object we created and returned it from our factory function 
+
+// and because we use the object literal syntax 
+// internally it was created using this object constructor function 
+
+// in JavaScript we have a few other built-in constructors 
+// for example 
+// we have 
+
+new String();
+
+// for creating strings 
+// but quite often we use string literals so single quote '' or double quote "" or backtick ``
+// using these literals is cleaner and simpler than using the constructor 
+
+new Boolean();
+
+// you also have Boolean 
+// but again we don't use this we either use true or false 
+// so we refer to these as boolean literals 
+
+new Number();
+
+// we also have Number 
+// but instead we use number literals like 1 2 3 whatever
+
+// so this is what I want you to take away 
+
+// EVERY OBJECT HAS A CONSTRUCTOR PROPERTY
+// AND THAT REFERENCES THE FUNCTION THAT WAS USED TO CREATE AN OBJECT
+
+
+
+
+// --------------------------------------------------
+// 2.6 Objects - Functions are Objects
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+const another = new Circle(1);
+
+// One of the confusing concepts in JavaScript is that here functions are objects 
+
+// so this circle function we have here is actually an object 
+
+// don't believe me let me show you, so 
+
+// circle.
+
+// look these are all the members of this circle function or circle object 
+
+// so the purple icons are methods like call bind and apply 
+// and the blue icons are properties 
+
+// so let's take a look at a few of these members in the console 
+
+// here in the console 
+
+circle.name
+
+console.log(circle.name);
+// output:
+// Circle
+
+// that returns the name of this function 
+
+circle.length
+
+console.log(circle.length);
+// output:
+// 1
+
+// returns the number of arguments 
+
+// now earlier in the last lecture I told you that every object in JavaScript 
+// has a constructor property 
+
+// and that references the function that was used to create an object 
+
+// but here's the interesting part, 
+// who do you think created this object
+// let's have a look so
+
+circle.constructor
+
+console.log(circle.constructor);
+// output:
+// [Function: Function]
+
+// so here we have another built-in constructor called Function 
+// and when we declare a function using this syntax 
+// internally JavaScript engine will use this function constructor 
+// to create this object
+
+// let me show you
+// so I'm gonna define a constant called Circle1
+// to separate from our circle 
+
+// set it to "new" "Function"
+
+const Circle1 = new Function();
+
+// now here our function requires one parameter radius 
+// so we add that here as a string 
+
+const Circle1 = new Function('radius');
+
+// now as the second argument
+// I'm gonna pass the code inside of this function 
+// so to break it up into multiple lines
+// I'm going to use the backtick character 
+// and then simply copy all this code and put it here
+
+const Circle1 = new Function('radius', `
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+`);
+
+// so when we declare a function internally it's represented like this
+
+// now we can call this circle one just like calling our circle function
+// so we can create a circle object by newing up circle one and pass one as the radius
+
+const Circle1 = new Function('radius', `
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+`);
+
+const circle = new Circle1(1);
+
+// save the changes, now in the console let's log circle 
+
+const Circle1 = new Function('radius', `
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+`);
+
+const circle = new Circle1(1);
+
+console.log(circle);
+// output:
+// anonymous { radius: 1, draw: [Function (anonymous)] }
+
+// look it's a real circle object with these two members
+
+// now let's take a look at a couple of methods that are available in our functions
+
+// so I'm gonna delete all this code
+
+// here we have this call method 
+// and with this we can call a function
+
+Circle.call();
+
+// here we have this call method 
+// and with this we can call a function
+
+// look at the arguments the first argument is thisArg
+// here we need to pass an empty object 
+
+Circle.call({});
+
+// and "this" (inside the Circle1 function {code block}) 
+// will reference this object that we pass here
+
+// okay after that we add our arguments explicitly
+// so here we have one argument we pass 1 
+// if you had multiple arguments we would pass them explicitly like this
+
+Circle.call({}, 1);
+
+// okay so this expression is exactly like expression on line 11
+
+new Circle(1);
+
+// when we use the "new" operator this "new" operator will internally 
+// create an empty object and pass them as the first argument to the call method 
+// and this object will determine the context for this 
+
+// so "this" will reference this object ({})
+
+// earlier I told you that if you don't use the "new" operator 
+// "this" by default will point to the global object which is window
+
+// so if I want to rewrite this expression 
+// in this way 
+// instead of passing an empty object 
+// I would pass window 
+
+Circle.call(window, 1);
+
+// of course we don't want to do this 
+// I'm just explaining to you what happens under the hood 
+
+// so let's rewrite this back 
+// so the first argument here specifies the target of this
+// okay 
+
+// now we have another METHOD CALLED APPLY 
+
+Circle.apply();
+
+// it's exactly like the call method 
+// with this we can call a function 
+
+Circle.apply({}, [1, 2, 3]);
+
+// but INSTEAD OF PASSING ALL THE ARGUMENTS EXPLICITLY 
+// WE PASS THEM IN AN ARRAY so this is useful if you already have an array 
+// somewhere else in your application 
+// and you want to pass an array as the second argument to the apply method
+
+// so this is the takeaway IN JAVASCRIPT FUNCTIONS ARE OBJECTS
+
+
+
+
+// --------------------------------------------------
+// 2.7 Objects - Value vs Reference Types
+
+// In JavaScript we have TWO CATEGORIES OF TYPES. 
+// On one side we have VALUE TYPES, also called primitives, 
+// on the other side we have REFERENCE TYPES. 
+
+// So in the value types category we have 
+// number, string, boolean, symbol (which is new in ES6) as well as undefined and null. 
+// These are the primitive or value types. 
+
+// On the other side we have objects, functions, and arrays.
+
+//      VALUE TYPES         REFERENCE TYPES
+//
+//      Number              Object
+//      String              Function
+//      Boolean             Array
+//      Symbol
+//      undefined
+//      null
+
+// So in the last lecture you learned that FUNCTIONS ARE ALSO OBJECTS.
+// THE SAME IS TRUE ABOUT ARRAYS, 
+// so in a nutshell in JavaScript we have Primitives and Objects. 
+
+// Now in this lecture, 
+// I'm going to SHOW YOU HOW PRIMITIVES AND OBJECTS BEHAVE DIFFERENTLY, 
+// because this is absolutely important for you to understand, 
+// before we move onto the next section where I talk about Prototypes. 
+
+// So on this empty canvas, I'm going to define two primitives, x and y. 
+// I'm going to set y to x, so here y is 10,
+// now I'm going to change the value of x to 20, 
+
+// what I want you to note here, is that X AND Y ARE TWO INDEPENDENT VARIABLES,
+// so, let's save the changes, go back in the console,
+// let's log x and y,
+
+let x = 10;
+let y = x;
+
+X = 20;
+
+console.log(x);
+console.log(y);
+// output:
+// 10
+// 10
+
+// x is 20, and y is 10
+// they are INDEPENDENT. 
+
+// So WHEN WE WORK WITH PRIMITIVES. 
+// THIS VALUE (10) THAT WE HAVE HERE IS STORED INSIDE OF THIS VARIABLE (x). 
+
+// WHEN WE COPY THAT VARIABLE THAT VALUE THAT IS STORED IN THE VARIABLE (x)
+// IS COPIED INTO THIS NEW VARIABLE (y). 
+
+// So THEY ARE COMPLETELY INDEPENDENT OF EACH OTHER. 
+
+// NOW LET'S SEE WHAT HAPPENS IF WE USE A REFERENCE TYPE or an object HERE. 
+
+// So I'm going to change this (let x = 10) 
+// to an object that has a property called value ( let x = { value: 10 } ). 
+// And then instead of saying x to 20, I'm going to set x.value to 20.
+// So save the changes, 
+// let's log x so you can see value property is 20, 
+// now let's log y, you can see the value property of y is also 20. 
+
+let x = { value: 10 };
+let y = x;
+
+x.value = 20;
+
+console.log(x);
+console.log(y);
+// {value: 20}
+// {value: 20}
+
+// So this is the takeaway,
+
+// WHEN WE USE AN OBJECT, THAT OBJECT IS NOT STORED IN THIS VARIABLE (x).
+
+// THAT OBJECT IS STORED SOMEWHERE ELSE IN THE MEMORY (12345), 
+// AND THE ADDRESS OF THAT MEMORY LOCATION (12345) IS STORED INSIDE THAT VARIABLE. 
+
+// So then when we copy x into y, 
+
+// let y = x;
+
+// IT'S THE ADDRESS OR THE REFERENCE (12345) THAT IS COPIED. 
+// In other words, BOTH X AND Y ARE POINTING TO THE SAME OBJECT IN MEMORY (12345). 
+
+// And WHEN WE MODIFY THAT OBJECT USING X, OR Y, 
+// THE CHANGES ARE IMMEDIATELY VISIBLE TO OTHER VARIABLE. 
+
+// So here's the conclusion. 
+
+// PRIMITIVES ARE COPIED BY VALUE
+// REFERENCE TYPES (OR OBJECTS) ARE COPIED BY BY THEIR (memory) REFERENCE.
+
+// Let's take a look at another example. 
+
+// So I'm going to define a function called increase that takes a number,
+// and here we simply increase this number by one.
+// Let's declare a number variable and set it to 10. 
+// And then call increase and pass this number. 
+
+// Now, if I log this number on the console, what do you think you'll see? 
+// Let's have a look. So save the changes, we see 10. 
+
+// Primitive Types VALUE - Example with Function
+let number = 10;
+
+function increase(number) {
+    number++;   // this variable number here 
+}                // is COMPLETELY INDEPENDENT OF THE let "number" VARIABLE above.
+
+increase(number);
+console.log(number);
+// 10
+
+// But didn't we increase the number?
+// WELL WHEN WE CALL INCREASE AND PASS THIS NUMBER VARIABLE 
+// IT'S VALUE IS COPIED INTO THIS PARAMETER THAT IS LOCAL IN THIS FUNCTION. 
+
+// SO THIS VARIABLE HERE IS COMPLETELY INDEPENDENT OF THIS OTHER NUMBER VARIABLE. 
+
+// Here in this function, we increment this number by 1, so it will be 11, 
+// but after this function this number is going to go out of the scope. 
+
+// So when we log this number on the console, 
+// we're essentially dealing with this first number. 
+
+// So I told you that PRIMITIVES ARE COPIED BY THEIR VALUE. 
+
+// SO HERE WE'RE DEALING WITH TWO INDEPENDENT COPIES. 
+// That's why you see 10 on the console. 
+
+
+// Now let's change this to a reference type or an object.
+// So, I'm going to change 10 to an object, that has a value property. 
+// Okay? Let's rename this variable to object, and similarly, 
+// im going to rename the parameter in this function to object, 
+// and then increment object.value. 
+
+// Now when we log this on the console, what do you think we're going to see? 
+// We're going to see 11. See? We got this object with value 11. 
+
+// Reference Types VALUE - Example with Function
+let object = { value: 10 };
+
+function increase(object) {
+    object.value++;
+}
+
+increase(object);
+console.log(object);
+// 11
+
+// THE REASON FOR THIS IS BECAUSE WHEN WE CALL INCREASE AND PASS THIS OBJECT. 
+// THIS OBJECT IS PASSED BY IT'S REFERENCE. 
+
+// So this local parameter that we have here (in the function: increase(object)) 
+// WILL POINT TO THE SAME OBJECT that we defined here (in the let statement: let object). 
+
+// SO IN THIS CASE WE ARE NOT DEALING WITH TWO INDEPENDENT COPIES, 
+// WE HAVE TWO VARIABLES THAT ARE POINTING TO THE SAME OBJECT. 
+// SO ANY CHANGES WE MAKE TO THIS OBJECT WILL BE VISIBLE TO THE OTHER VARIABLE. 
+
+// So remember this, in JavaScript 
+// we have value types, also called primitives, 
+// as well as reference types which are objects. 
+
+// Our primitives are number, string, boolean, symbol, undefined and null. 
+
+// PRIMITIVES OR VALUE TYPES ARE COPIED BY THEIR VALUE 
+// REFERENCE TYPES OR OBJECTS, ARE COPIED BY THEIR REFERENCE.
+
+
+
+
+// --------------------------------------------------
+// 2.8 Objects - Adding/Removing Properties
+
+// all right so here we have our circle constructor function 
+// and using that we create a circle object 
+
+// now THESE OBJECTS IN JAVASCRIPT ARE DYNAMIC 
+// THAT MEANS AFTER YOU CREATE THEM YOU CAN ADD EXTRA PROPERTIES IN THEM 
+// OR DELETE SOME PROPERTIES 
+
+// you might be wondering why this is useful in the real world 
+
+// imagine you're working with a user object 
+// the client that can be a web or a mobile application 
+// is going to send a user object to the server 
+// on the server we get this user object and then we add additional stuff to it 
+// for example we can add a token property 
+// that we generate on the fly on the server 
+
+// so we can always add something extra to an existing object 
+
+// because we don't have classes we don't need to define these properties ahead of time 
+
+// we can add them whenever we need them 
+// and this makes JavaScript extremely powerful and easy to work with 
+
+// in languages like C# or Java every time you want to implement scenarios 
+// like this we have to go back and change our classes 
+
+// so here let me add a new property to our circle object
+
+// we can set the location here 
+// like this, save the changes 
+// now here on the console let's log circle
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+circle.location = { x: 1 }; // adding a property
+
+console.log(circle);
+// output:
+// Circle { radius: 10, draw: [Function (anonymous)], location: { x: 1 } }
+
+// all right you can see here we have two properties location and radius 
+
+// we also have another notation for accessing properties 
+// that is BRACKET NOTATION 
+// so another way to rewrite this code is like this 
+// WE USE BRACKETS AND USE A STRING TO REFERENCE A PROPERTY SO LOCATION
+
+circle['location'] = { x: 1 };
+
+// it's exactly the same 
+// as you can see the dot notation is simpler and less verbose than bracket notation 
+// but this notation is also useful in certain scenarios 
+// for example when you want to dynamically access a property name 
+
+// for example let's imagine we have this constant called 
+
+// propertyName = 'location'; 
+
+// you have that somewhere in our application 
+// now we want to access the location property of a circle
+
+// if you're dealing with this dynamically 
+// at the time of writing the code 
+// we don't know what is the name of that property 
+// that is calculated at runtime 
+
+// so we can't type something like this 
+
+circle.location;
+
+// but what we can do is use the bracket notation 
+// so we use circle brackets property name
+
+const propertyName = 'location';
+circle[propertyName] = { x: 1 };
+
+// another use case for using the bracket notation 
+// is WHEN YOU'RE USING THE PROPERTY NAMES THAT ARE NOT VALID IDENTIFIERS 
+// for example let's imagine the name of this property is center-location 
+
+// WE CAN'T ACCESS THIS PROPERTY LIKE THIS
+
+// circle.center-location
+
+// THAT DOESN'T WORK 
+
+// SO IF YOU HAVE SPECIAL CHARACTERS OR A SPACE 
+// THAT'S WHEN YOU USE THE BRACKET NOTATION
+
+// okay now WE CAN ALSO DELETE A PROPERTY FROM AN EXISTING OBJECT 
+
+// a real word use case for this is when you get a user object from a database 
+// and you want to return it to the client 
+// but maybe that user object has certain properties you don't want to send to the client 
+// you don't want to send the password 
+// you don't want to send the credit card info 
+
+// in that case you will dynamically delete one or more properties from an object 
+
+// so we use the delete operator and then reference the property name 
+// so delete circle dot location
+
+delete circle.location;
+
+// again here we can use the dot notation or bracket notation.
+
+
+
+
+// --------------------------------------------------
+// 2.9 Objects - Enumerating Properties
+
+// sometimes you need to iterate over or enumerate the properties in an object 
+
+// we can do that using the for in loop so 
+
+// for let key in circle 
+// so in every iteration key will hold the value of one key in this object
+// let's log that on the console 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+for (let key in circle) {
+    console.log(key);
+}
+// output:
+// radius
+// draw
+
+// okay so look we have radius and draw 
+// so it's returning both properties and methods 
+
+// now if you want to get the value of these properties 
+// you can use the bracket notation 
+// so here on console.log I'm gonna log circle of key 
+
+// you learnt in the last lecture that we can use the bracket notation 
+// to access a member, okay 
+// so save, now you can see radius is 10 and draw as a function 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+for (let key in circle) {
+    console.log(key, circle[key]);
+}
+
+// output:
+// radius 10
+// draw [Function (anonymous)]
+
+// what if we want to get only the properties and not the methods 
+
+// well we can use the type of operator 
+// to check the type of this value 
+// so if typeof circle of key it is not equal to function 
+// then we will display it on the console 
+// save the changes, now we get only the radius 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+for (let key in circle) {
+    if (typeof circle[key] !== 'function')
+        console.log(key, circle[key]);
+}
+// output:
+// radius 10
+
+
+// there is another approach to get all the keys in an object 
+
+// so this Object that we have has a method called keys 
+// we can pass our circle object here 
+// and this will return all the keys in the circle as an array
+// so let's store them here and log them on the console 
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+const keys = Object.keys(circle);
+console.log(keys);
+// output:
+// [ 'radius', 'draw' ]
+
+// so here we have an array with two members radius and draw 
+
+// with this approach we cannot separate properties from methods 
+
+// now finally sometimes you want to know if an object has a given property 
+
+// for that we use the in operator 
+
+// so if here we add the name of the property as a string 
+// if radius is in circle 
+// we do a console.log of 'circle has a radius' 
+// okay save the changes and here's our message
+
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const circle = new Circle(10);
+
+if ('radius' in circle)
+    console.log('Circle has a radius');
+// output:
+// Circle has a radius
+
+// so remember 
+
+// TO ENUMERATE ALL THE MEMBERS IN AN OBJECT YOU CAN USE A FOR IN LOOP 
+// TO GET ALL THE KEYS IN AN OBJECT USE Object.keys 
+// AND TO CHECK FOR THE EXISTENCE OF A PROPERTY OR A METHOD IN AN OBJECT USE THE IN OPERATOR
+
+
+
+
+// --------------------------------------------------
+// 2.10 Objects - Abstraction
+
+// all right now let's introduce some complexity in this example
+
+// so I'm going to define another property 
+// called defaultLocation 
+// set it to an object like this
+
+// also let's define another method computeOptimumLocation 
+// we set this to a function and here we're going to do some magic 
+// it doesn't really matter 
+// what matters is that we're going to call this method inside of the draw method 
+// so we call this.computeOptimumLocation 
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.defaultLocation = { x: 0, y: 0 };
+
+    this.computeOptimumLocation = function () {
+        // ...
+    }
+
+    this.draw = function () {
+        this.computeOptimumLocation();
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+
+
+// now there is a problem with this implementation 
+// let me show you 
+
+// so here when we create the circle object 
+
+// circle.
+
+// (you can see defaultLocation and computeOptimumLocation etc)
+
+// these are the members of our circle object 
+// not all these members should be accessible to me 
+// as the consumer or the client of this object 
+
+// for example what would happen if I set default location to false 
+// that's gonna completely mess up with this object 
+
+// or as another example maybe this compute method 
+// should only be called inside of the draw method
+
+// so if I accidentally call it here 
+// circle.computeOptimumLocation(); 
+// maybe this will put this object in a bad state 
+// and then if I call 
+// circle.draw 
+// we're gonna get a weird error at runtime 
+
+// so IN OBJECT-ORIENTED PROGRAMMING WE HAVE THIS CORE CONCEPT CALLED ABSTRACTION
+
+// ABSTRACTION MEANS WE SHOULD HIDE THE DETAILS AND COMPLEXITY 
+// AND SHOW OR EXPOSE ONLY THE ESSENTIALS
+
+// in this particular example we should hide this property defaultLocation 
+// as well as the computeOptimumLocation method 
+// THESE ARE IMPLEMENTATION DETAILS 
+// THESE ARE PART OF THE COMPLEXITY OF THIS OBJECT 
+// WE WANT TO HIDE THESE FROM THE CONSUMERS OF THIS OBJECT
+
+// INSTEAD WE WANT TO EXPOSE ONLY THE ESSENTIALS 
+
+// that is the radius and the draw method 
+
+// let me give you a metaphor think of a DVD player 
+// a DVD player has a complex logic board on the inside 
+// but only a few buttons on the outside that you interact with 
+
+// so what we have on the inside is the implementation detail 
+// and what we have on the outside is the public interface of a DVD player
+
+// we want our objects to look like this DVD player
+// we want to hide all the details all the unnecessary complexity on the inside 
+// and expose only a few members or a few buttons on the outside
+
+// a lot of developers who have not been able to apply object-oriented programming effectively 
+// have failed to comply with this principle 
+
+// everything in their objects is public and accessible from the outside 
+// and this will bring a number of issues 
+
+// one issue is that every time you change the implementation of that object 
+// you have to go and modify many different places in your code 
+
+// for example let's imagine now this computeOptimumLocation method requires an argument 
+// let's add a factor argument here
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.defaultLocation = { x: 0, y: 0 };
+
+    this.computeOptimumLocation = function (factor) { // added factor argument here
+        // ...
+    }
+
+    this.draw = function () {
+        this.computeOptimumLocation();
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+circle.computeOptimumLocation(0.1); // now you have to pass an argument, everywhere this method is used
+
+// with the current implementation because we can access this from the outside 
+// everywhere we have used this method 
+// you have to come back and pass an argument 
+
+// so one simple change in the implementation of an object results 
+// in a number of changes in your source code 
+
+// in contrast imagine if this method was not accessible from the outside 
+// then we wouldn't have to modify this line 
+// it would only modify line 12
+
+// this.computeOptimumLocation();
+
+// where we have called this function, right 
+
+// so REMEMBER THE ABSTRACTION PRINCIPLE OF OBJECT-ORIENTED PROGRAMMING 
+// HIDE THE DETAILS AND EXPOSE ONLY THE ESSENTIALS 
+
+// in the next lecture I'm going to show you how to implement this in JavaScript
+
+
+
+
+// --------------------------------------------------
+// 2.11 Objects - Private Properties and Methods
+
+// so HOW DO WE IMPLEMENT ABSTRACTION HERE
+// YOU WANT TO HIDE CERTAIN MEMBERS FROM THE OUTSIDE 
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.defaultLocation = { x: 0, y: 0 };
+
+    this.computeOptimumLocation = function (factor) {
+        // ...
+    }
+
+    this.draw = function () {
+        this.computeOptimumLocation(0.1);
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+circle.draw();
+
+// so earlier you learned that "this" references that new circle object
+
+// now what happens if I declare a local variable in this function 
+// let's say color we set that to red 
+
+function Circle(radius) {
+    let color = 'red';
+}
+
+// is this going to be part of that object of course not 
+// because we have not set that as a property on that object 
+
+// we didn't set this.color to color, okay 
+
+function Circle(radius) {
+    let color = 'red';
+    this.color = color;
+}
+
+// so this (let color = 'red') is only a local variable inside of this function 
+
+// when we get out of this function this variable goes out of scope and dies
+
+// now with this technique 
+// we can easily hide certain members from the outside 
+
+// so defaultLocation is implementation detail
+// we don't want this to be accessible from the outside
+// instead of setting in as a property on our new object 
+
+// we define it as a local variable here, okay 
+
+
+function Circle(radius) {
+    this.defaultLocation = { x: 0, y: 0 }; // old - property of Object
+    let defaultLocation = { x: 0, y: 0 }; // new - local variable
+}
+
+// now we don't need this color anymore 
+
+// by the same token we can convert this method to a private method 
+// so let compute be a function
+
+function Circle(radius) {
+    this.computeOptimumLocation = function (factor) { // old
+        // ...
+    }
+    let computeOptimumLocation = function (factor) { // new
+        // ...
+    }
+}
+
+// now here in the draw method we are calling computeOptimumLocation 
+// this function will no longer be a method on this new object 
+// so we cannot access it using this
+// you have to access it directly here 
+
+function Circle(radius) {
+    let computeOptimumLocation = function (factor) {
+        // ...
+    }
+
+    this.draw = function () {
+        // this.computeOptimumLocation(0.1); // need to remove the "this." because no longer property
+        computeOptimumLocation(0.1);
+
+        console.log('draw');
+    };
+}
+
+
+// THIS WILL WORK BECAUSE IN JAVASCRIPT WE HAVE THIS CONCEPT OF CLOSURE
+
+// if you don't know closure let me simplify it for you 
+
+// so here WE HAVE ONE FUNCTION ("function Circle()") 
+// AND ANOTHER FUNCTION ("draw = function()") **INSIDE** OF THAT FUNCTION
+
+// IN THIS FUNCTION ("draw = function()") WE CAN DECLARE CERTAIN VARIABLES like X and Y 
+// AND THESE ARE LOCAL VARIABLES THAT ARE ONLY AVAILABLE IN THIS FUNCTION ("draw = function()") 
+// THEIR SCOPE IS LIMITED TO THIS FUNCTION ("draw = function()")
+// SO WHEN WE FINISH EXECUTING THIS FUNCTION x and y WILL GO OUT OF SCOPE 
+
+function Circle(radius) {
+    this.draw = function () {
+        let x, y;
+
+        computeOptimumLocation(0.1);
+
+        console.log('draw');
+    };
+}
+
+// IN CONTRAST TO SCOPE WE HAVE **CLOSURE**
+
+// A CLOSURE DETERMINES WHAT VARIABLES WILL BE ACCESSIBLE TO AN INNER FUNCTION
+
+// so THIS (INNER) FUNCTION WILL BE ABLE TO ACCESS ALL THE LOCAL VARIABLES DEFINED HERE 
+// AS WELL AS THE VARIABLES DEFINED IN HIS PARENT FUNCTION 
+
+// so here we declared two variables computeOptimumLocation which is a function 
+// as well as defaultLocation 
+
+// these are THE VARIABLES THAT ARE DEFINED IN THIS PARENT FUNCTION 
+
+// THEY ARE WITHIN THE SCOPE OF THIS FUNCTION 
+
+// BUT WITHIN THE **CLOSURE** OF THIS INNER FUNCTION 
+
+// now DON'T CONFUSE CLOSURE WITH A SCOPE 
+// because the SCOPE IS TEMPORARY AND IT DIES 
+
+// so EVERY TIME WE CALL THE DRAW METHOD THESE VARIABLES WILL BE RECREATED AND REINITIALIZED
+
+// AND THEN AFTER THIS FUNCTION THEY WILL DIE
+
+// so SCOPE IS TEMPORARY BUT CLOSURE STAYS THERE 
+
+// so WHEN WE CALL THE DRAW FUNCTION AFTER WE FINISHED EXECUTING THIS FUNCTION 
+// THESE VARIABLES:
+
+// let defaultLocation = { x: 0, y: 0 };
+// let computeOptimumLocation = function (factor) {}
+
+// WILL CONTINUE TO STAY IN MEMORY, THEY WILL PRESERVE THEIR STATE 
+// BECAUSE THEY ARE PART OF THE CLOSURE OF THIS DRAW FUNCTION 
+
+// okay, so back here, 
+// so in this method IF YOU WANT TO ACCESS THOSE PRIVATE MEMBERS 
+// YOU SIMPLY USE THEM HERE (in the codeblock of the draw function)
+// you can also use defaultLocation
+
+// BUT IF YOU WANT TO ACCESS MEMBERS OF THIS NEW CIRCLE OBJECT 
+// YOU NEED TO USE "this." 
+// so this dot radius as an example, okay
+
+function Circle(radius) {
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    let computeOptimumLocation = function (factor) {
+        // ...
+    }
+
+    this.draw = function () {
+        computeOptimumLocation(0.1);
+
+        defaultLocation; // private member of the circle object
+
+        this.radius; // member of this circle object
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+// circle.
+
+// NOW WITH THIS SIMPLE CHANGE, WE BASICALLY REPLACE "this" WITH "let"
+// let's see what happens 
+
+// if I access the members of the circular object
+
+// circle.
+
+// we only see draw and radius
+
+// so the public interface of this object is simpler 
+// it's easier to work with 
+// and this will also prevent issues later down the road
+
+
+
+
+// --------------------------------------------------
+// 2.12 Objects - Getters and Setters
+
+// so in the last lecture we converted these two members to private members 
+// now MORE ACCURATELY THESE ARE NOT PRIVATE MEMBERS OF THE CIRCLE OBJECT 
+// BECAUSE TECHNICALLY THEY ARE NOT INSIDE OF A CIRCLE OBJECT 
+// THEY ARE LOCAL VARIABLES THAT WE HAVE DEFINED INSIDE OF THIS CIRCLE FUNCTION
+
+// BUT FROM AN OBJECT-ORIENTED POINT OF VIEW 
+// WE CAN REFER TO THEM AS PRIVATE MEMBERS OF THE CIRCLE OBJECT 
+
+// now I want to simplify the code here so we can focus on a small issue 
+
+// I'm gonna delete this compute function right 
+
+function Circle(radius) {
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    this.draw = function () {
+        defaultLocation; // private member of the circle object
+
+        this.radius; // member of this circle object
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+
+// so we have this private property "let defaultLocation"
+
+// we cannot access this from the outside 
+
+// but what if we want to display that default location 
+// somewhere in our application 
+// so we don't want to modify we just want to be able to read it 
+
+// so one solution is to define a method here
+// we set it to a function and in this function 
+// we simply return default location
+
+// once again we're dealing with an inner function 
+// here the closure of this function includes all the variables defined here (in the function code block)
+// as well as all the variables defined and its parent functions (code blocks)
+
+// so here we have access to default location 
+// and with this we can call:
+
+function Circle(radius) {
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    this.getDefaultLocation = function () { // added this method
+        return defaultLocation;
+    }
+
+    this.draw = function () {
+        defaultLocation;
+
+        this.radius;
+
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+
+circle.getDefaultLocation(); // calling the method
+
+// however I don't like this syntax I don't like the fact 
+// that we're calling this as a method 
+// it would be nicer if we could access this property like this:
+
+circle.getDefaultLocation;
+
+// but we shouldn't be able to set this from the outside 
+
+circle.getDefaultLocation = 0;
+
+// we can only read it 
+
+// so let me show you how to define a property like that 
+
+// so this Object that you have seen so far 
+// has a method called define property 
+
+Object.defineProperty
+
+// we have another method called defined properties 
+// if you want to define multiple properties in one go
+
+Object.defineProperties
+
+// now the first argument of this method is the object that we want to add a new property to 
+
+// that object is the one that is referenced by "this" the new circle object 
+// right,
+
+// so we pass it here 
+
+Object.defineProperty(this)
+
+// the second argument is the name of our property we want to call that default location
+
+Object.defineProperty(this, 'defaultLocation')
+
+// and the third argument is an object in this object we add a key value pair 
+// the key is get this is a special keyword for JavaScript 
+// and the value is a function 
+
+// so when we access circle.defaultlocation this function (get: function()) will be called 
+
+// okay now here we can simply return defaultLocation 
+
+Object.defineProperty(this, 'defaultLocation', {
+    get: function () {
+        return defaultLocation;
+    }
+});
+
+// again this variable is part of the closure of this inner function 
+// so here we can access it 
+
+// right now in VSCode you don't see that in intellisense so we don't have default
+// location as a property 
+
+// however if you save the changes
+// all right so now look at the circle object (in Chrome)
+
+// so here's our new property defaultLocation 
+// you can see (...) dot dot dot in front of it because this is a computed property 
+// when we click this that get function will be executed 
+// and here's the result our default location, okay 
+
+function Circle(radius) {
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    this.getDefaultLocation = function () {
+        return defaultLocation;
+    }
+
+    this.draw = function () {
+        console.log('draw');
+    };
+
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function () {
+            return defaultLocation;
+        }
+    });
+
+}
+
+const circle = new Circle(10);
+console.log(circle);
+console.log(circle.defaultLocation);
+// output:
+// Circle {
+//     radius: 10,
+//     getDefaultLocation: [Function (anonymous)],
+//     draw: [Function (anonymous)]
+// }
+// { x: 0, y: 0 }
+
+
+// also we can see that function is stored here as a getter (in Chrome)
+// get defaultLocation: f ()
+
+// so A GETTER IS A FUNCTION THAT IS USED TO READ A PROPERTY 
+
+// so this property we have here 
+// defaultlocation
+// WE REFER TO THIS AS A READ-ONLY PROPERTY
+
+// now IF YOU WANT TO SET THE VALUE OF THIS PROPERTY FROM THE OUTSIDE 
+// WE DEFINE A SETTER 
+
+// so in this object we add another key value pair 
+
+// the key is set which is a special keyword 
+// and the value is a function 
+
+Object.defineProperty(this, 'defaultLocation', {
+    get: function () {
+        return defaultLocation;
+    },
+    set: function () {
+
+    }
+});
+
+// now this function takes an argument called value 
+// we can set this default location to this value 
+
+Object.defineProperty(this, 'defaultLocation', {
+    get: function () {
+        return defaultLocation;
+    },
+    set: function (value) {
+        defaultLocation = value;
+    }
+});
+
+// but what is interesting is that because we are using a function
+// in this function we can perform some validation 
+// for this value before setting the default location
+
+// for example we can write a simple logic like this 
+// if value.x is falsey or value.y is falsy 
+// we can throw a new error 
+// again error as a built-in constructor that we use to create error objects
+// we pass a string "invalid location" 
+
+function Circle(radius) {
+    this.radius = radius;
+
+    let defaultLocation = { x: 0, y: 0 };
+
+    this.getDefaultLocation = function () {
+        return defaultLocation;
+    }
+
+    this.draw = function () {
+        console.log('draw');
+    };
+
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function () {
+            return defaultLocation;
+        },
+        set: function (value) { // setter
+            if (!value.x || !value.y) // validation
+                throw new Error('Invalid location.');
+
+            defaultLocation = value;
+        }
+    });
+
+}
+
+const circle = new Circle(10);
+
+console.log(circle.defaultLocation);
+circle.defaultLocation = { x: 1, y: 1 };
+console.log(circle.defaultLocation);
+// output:
+// { x: 0, y: 0 }
+// { x: 1, y: 1 }
+
+circle.defaultLocation = 1;
+// output:
+// Error: Invalid location.
+
+
+// so THIS IS THE BENEFIT OF A SETTER 
+
+// now we can come here and set circle.defaultLocation 
+
+// let's see what happens if we set this to one save the changes 
+// and here's our error invalid location
+
+// so to recap 
+// USE Object.defineProperty TO DEFINE GETTERS AND/OR SETTERS
+
+
+
+
+// --------------------------------------------------
+// 2.13 Objects - Cheat Sheet
+
+// The simplest way to create an object is using an object literal 
+const circle = {
+    radius: 1,
+    draw: function () { }
+};
+
+// To create multiple objects with the same structure and behaviuor (methods), 
+// use a factory or a constructor. 
+
+// Factory function 
+function createCircle(radius) {
+    return {
+        radius,
+        draw: function () { }
+    }
+};
+
+// Constructor function 
+function Circle(radius) {
+    this.radius = radius;
+    this.draw = function () { }
+}
+
+// Every object has a "constructor" property which returns the function 
+// that was used to construct or create that object. 
+const x = {};
+x.constructor; // returns Object() 
+
+// In JavaScript, functions are objects. They have properties and methods. 
+Circle.name;
+Circle.length;
+Circle.constructor; // returns Function()
+Circle.call({}, 1); // to call the Circle function 
+Circle.apply({}, [1]);
+
+// Value types are copied by their value, reference types are copied by their reference. 
+// Value types in JavaScript are: String, Number, Boolean, Symbol, undefined and null
+// Reference types are: Object, Function and Array 
+
+// JavaScript objects are dynamic. You can add/remove properties: 
+circle.location = {};
+circle['location'] = {};
+
+delete circle.location;
+
+// To enumerate the members in an object: 
+for (let key in circle)
+    console.log(key, circle[key]);
+
+Object.keys(circle);
+
+// To see if an object has a given property
+if ('location' in circle) { }
+
+// Abstraction means hiding the complexity/details and showing only the essentials. 
+// We can hide the details by using private members. Replace "this" with "let". 
+
+function Circle(radius) {
+    // Public member 
+    this.radius = radius;
+
+    // Private member                       
+    let defaultLocation = {};
+}
+
+// To define a getter/setter, use Object.defineProperty():
+
+Object.defineProperty(this, 'defaultLocation', {
+    get: function () { return defaultLocation; },
+    set: function (value) { defaultLocation = value; }
+});
+
+
+
+
+// --------------------------------------------------
+// 2.14 Objects - Exercise/Solution - Stopwatch
+
+function Stopwatch() {
+
+    let startTime = 0;
+    let endTime = 0;
+    let running = false; // flag
+    let duration = 0;
+
+    this.start = function () {
+        if (running)
+            throw new Error('Stopwatch already started.');
+
+        running = true; // flag control
+
+        startTime = new Date(); // new Date Object
+    };
+
+    this.stop = function () {
+        if (!running)
+            throw new Error('Stopwatch is not started');
+
+        running = false; // flag control
+
+        endTime = new Date(); // new Date Object
+
+        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+
+        duration += seconds;
+    };
+
+    this.reset = function () {
+        startTime = 0;
+        endTime = 0;
+        running = false;
+        duration = 0;
+    };
+
+    Object.defineProperty(this, 'duration', {
+        get: function () { return duration; }
+    });
+
+}
+
+const sw = new Stopwatch();
+
+sw.start();
+console.log('starting...')
+console.log(sw.startTime);
+
+sw.stop();
+console.log('stopping...')
+console.log(sw.endTime);
+
+console.log('duration:', sw.duration)
+
+sw.start();
+console.log('starting...')
+console.log(sw.startTime);
+
+sw.stop();
+console.log('stopping...')
+console.log(sw.endTime);
+
+
+console.log(sw.duration);
+
+sw.reset();
+console.log(sw.duration);
+
+
+
+
+// --------------------------------------------------
+// 3.1 Prototypes - Inheritance
+
+// inheritance is one of the core concepts of object-oriented programming 
+// that enables an object to take on the properties and methods of another object
+// and this makes it easy to reuse code in different parts of an application 
+
+// here is a real example 
+// in the last section we define this circle object with this method computeOptimumLocation 
+
+//                 [ Circle ]
+//          computeOptimumLocation()
+
+// now for this discussion let's imagine here we're working with a class 
+
+// so let's imagine circle is a class and not an object 
+
+// I want to explain inheritance in its classical terms 
+
+// so we have the circle class with one method computeOptimumLocation
+
+// let's imagine tomorrow we're going to add another class to our application 
+// called square and square also needs this method computeOptimumLocation 
+
+//                 [ Circle ]                      [ Square ]
+//          computeOptimumLocation()        computeOptimumLocation()
+
+// for now let's imagine the implementation of this method is exactly the same 
+// across these two different classes
+
+// you don't want to repeat this implementation 
+
+// because if there is a bug in this implementation we have to fix it
+// in multiple places 
+
+// or if we decide to change the implementation 
+// and make it better 
+// again we have to repeat this in different places 
+
+// so THAT'S WHEN INHERITANCE COMES TO THE RESCUE 
+
+// we can define a new class called shape put this method there 
+// and have circle and square INHERIT THIS METHOD FROM THE Shape CLASS
+
+//               ..>       [ Shape ]          <..
+//              |    computeOptimumLocation()   |
+//              |                               |
+//          [ Circle ]                      [ Square ]
+
+// now in inheritance we have a few terms that you should be familiar with 
+// because I'm gonna use these terms throughout this course 
+
+// in this diagram we refer to the shape class as 
+// THE BASE CLASS OR SUPERCLASS OR PARENT CLASS 
+
+// all these terms are exactly the same different tutorials and different books 
+// use different terms 
+
+// in contrast we refer to the circle as 
+// THE DERIVED CLASS OR SUBCLASS OR CHILD CLASS 
+
+// and finally we refer to the inheritance relationship as a relationship 
+
+// so we say circle "IS-A" shape 
+
+//                     *Base/Super/Parent*
+//               ..>       [ Shape ]          <..
+//      *IS-A*  |    computeOptimumLocation()   |
+//              |                               |
+//          [ Circle ]                      [ Square ]
+//      *Derived/Sub/Child*             *Derived/Sub/Child*
+
+// now THIS IS THE CLASSICAL DEFINITION OF INHERITANCE 
+
+// but as you know IN JAVASCRIPT WE DON'T HAVE CLASSES WE ONLY HAVE OBJECTS 
+
+// SO THAT'S WHEN PROTOTYPICAL INHERITANCE COMES IN
+
+// so essentially WE HAVE TWO TYPES OF INHERITANCE CLASSICAL AND PROTOTYPICAL
+
+// and that's one of the topics for interview questions 
+
+// so what is prototypical inheritance 
+
+// that's the topic for the next lecture
+
+
+
+
+// --------------------------------------------------
+// 3.2 Prototypes - Prototypical Inheritance
+
+// so in the last lecture we talked about the circle and shape classes 
+
+// but in JavaScript we don't have classes we only have objects 
+// so how can we implement inheritance only using objects 
+
+// well here we have a circle object we can define another object 
+// let's call it shape and add all the common behavior 
+// or all the common methods in this object 
+
+// like computeOptimumLocation 
+
+// and then somehow we can link a circle object to the shape object 
+
+// now we refer to the shape object as the Prototype of the circle 
+
+// so A PROTOTYPE IS ESSENTIALLY A PARENT OF ANOTHER OBJECT 
+
+// a lot of courses and tutorials make prototypes sounds so confusing and complicated 
+// it's not 
+// WHENEVER YOU HEAR THE WORD PROTOTYPE JUST THINK PARENT 
+
+// so EVERY OBJECT IN JAVASCRIPT 
+// (except only a single object that I'm gonna show you in a second) 
+// HAS A PROTOTYPE OR PARENT AND IT INHERITS ALL THE MEMBERS DEFINED IN ITS PROTOTYPE 
+
+// let me show you this in action 
+// so here in chrome developer tools 
+// on the console I'm gonna define a new object 
+// just an empty object 
+
+// let x = {};
+// x 
+// .{}
+// ..__proto__: Object
+
+// now let's inspect this so look here we have a property called __proto__
+
+// note that this property is faded because it's deprecated and you shouldn't directly access it 
+// it's only available here to help you troubleshoot problems 
+
+// so let's expand this 
+// alright look this is the prototype or parent for this x object that we created here 
+
+// we have these properties and methods like constructor you saw that in the last section 
+
+// let x = {};
+// x 
+// .{}
+// ..__proto__: Object:
+// ...constructor: f Object()
+// ...hasOwnProperty: f hasOwnProperty()
+// etc etc
+// ...toString: f toString()
+// etc etc
+
+// so every object has a constructor property which references 
+// the function that was used to construct or create that object 
+
+// we also have this method here toString 
+// so let's use that method we can type x.toString and 
+// this is the default implementation of toString method 
+
+// so we have this x object in the memory 
+// and x has a link to another object which is its prototype 
+
+// for our discussion let's call this object objectBase 
+// it's not an official term you're not gonna find it anywhere 
+// it's just a name I'm gonna give it for our discussion 
+
+//             Protoype
+//     ..>  [ objectBase ]
+//    |
+//    |
+// [  x  ]
+
+// so EVERY OBJECT THAT WE CREATE IN JAVASCRIPT DIRECTLY OR INDIRECTLY INHERITS FROM OBJECTBASE
+
+// objectBase IS THE ROOT OF ALL OBJECTS IN JAVASCRIPT AND IT DOESN'T HAVE A PROTOTYPE OR PARENT 
+
+// let me show you so one more time let's inspect X 
+// okay here is its prototype which is our object base 
+
+// look THIS OBJECT DOESN'T HAVE A PROTO PROPERTY 
+// so IT DOESN'T HAVE A PROTOTYPE OR A PARENT 
+
+// now we can create another object 
+// here let's call this Y again another empty object let's inspect it 
+
+// let y = {};
+// y 
+// .{}
+// ..__proto__: Object:
+// ...constructor: f Object()
+// etc etc
+
+// so Y also has a prototype property which is the same object base that you saw a few seconds ago 
+
+// so here's what we have in memory 
+// we have x and y and both these objects reference objectBase 
+
+// so we have a single instance of objectBase in memory 
+
+//             Protoype
+//     ..>  [ objectBase ]  <..
+//    |                        |
+//    |                        |
+// [  x  ]                  [  y  ]
+
+
+// I can prove that to you 
+// so back in the console 
+// to get the prototype of an object we call
+
+Object.getPrototypeOf(x);
+// {}
+// .constructor: f Object()
+// .hasOwnProperty: f hasOwnProperty()
+// etc etc
+
+// so this is our object base with these members 
+
+// okay now we can write an expression like this 
+// we can check if it's equal to object that get prototype of Y 
+// look BOTH x AND y HAVE THE EXACT SAME PROTOTYPE 
+
+let x = {};
+let y = {};
+
+console.log(Object.getPrototypeOf(x) === Object.getPrototypeOf(y));
+// output:
+// true
+
+// now you might be wondering why I didn't write this expression like this 
+
+x.__proto__ === y.__proto__
+
+// the reason for this is because this property is deprecated 
+// so you shouldn't use it in the code 
+// but you can use it here on the console when debugging your applications 
+
+// so now that you understand what a prototype is 
+
+// let's define prototypical inheritance 
+
+// so earlier I accessed the toString method on the x object 
+
+x.toString(x);
+
+// we didn't define this method in our X object because X was an empty object right 
+
+// so how does this work?
+// how can we access this method 
+
+// well WHEN WE ACCESS A PROPERTY OR A METHOD ON AN OBJECT 
+// JAVASCRIPT ENGINE FIRST LOOKS FOR THAT PROPERTY OR METHOD ON THE OBJECT ITSELF 
+
+// IF IT CAN'T FIND IT THEN IT LOOKS AT THE PROTOTYPE FOR THAT OBJECT 
+// again if IT CANT FIND THAT MEMBER IT WILL LOOK AT THE PROTOTYPE OF THAT OBJECT 
+// ALL THE WAY UP TO THE ROOT OBJECT WHICH WE CALLED objectBase 
+
+// so THIS IS PROTOTYPICAL INHERITANCE IN ACTION 
+
+// WHEN ACCESSING A PROPERTY OR A METHOD ON AN OBJECT JAVASCRIPT ENGINE 
+// WALKS UP THE PROTOTYPE CHAIN TO FIND A TARGET MEMBER 
+
+// so once again I want to emphasize that
+
+// A PROTOTYPE IS JUST A REGULAR OBJECT IN MEMORY THERE IS NOTHING SPECIAL ABOUT IT
+
+// EVERY OBJECT HAS A PROTOTYPE OR A PARENT EXCEPT THE ROOT OBJECT
+
+
+
+
+// --------------------------------------------------
+// 3.2 Prototypes - Multi-level Inheritance
+
+// let's take a look at another example 
+// I'm gonna define an empty array
+// let's call this myArray 
+
+let myArray = [];
+
+// now let's inspect this alright so here 
+// we have a prototype property 
+// let's look at the prototype or the parent for this array 
+
+// myArray
+// .[]
+// ..length:0
+// ..__proto__: Array(0)
+// ...etc
+// ...indexOf: f indexOf()
+// ...push: f push()
+// ...etc
+
+// okay look and this object we have these methods 
+// chances are you have used some of these methods before 
+
+// for example we can call indexOf to locate an object in an array
+// we can call push to add a new object to the array and so on 
+
+// so all these methods are defined in this object which 
+// is the prototype or the parent for all arrays in JavaScript 
+
+// so this is what we have in memory 
+// we have myArray which derives from let's call this object arrayBase
+
+// now let us inspect the prototype of the arrayBase object 
+// so back here if you scroll down look here we have another proto property 
+// let's expand this what do you see here that looks familiar right 
+// this is our objectBase or the root object in JavaScript 
+
+// myArray
+// .[]
+// ..length:0
+// ..__proto__: Array(0)
+// ...etc
+// ...indexOf: f indexOf()
+// ...push: f push()
+// ...etc
+// ...__proto__:
+// ....constructor: f Object()
+// ....etc
+
+// so here's a visualization of what we have in memory
+
+// myArray derives from arrayBase an arrayBase derives from objectBase
+// this is what we call MULTI-LEVEL INHERITANCE
+
+//                      ---> [ objectBase]
+//                     |
+//        ---> [ arrayBase]
+//       |
+//  [ myArray ]
+
+// what about the objects that we create using our custom constructors 
+
+// so here we have this constructor circle 
+// and we have created the circle object using this constructor
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.draw = function () {
+        console.log('draw');
+    };
+}
+
+const circle = new Circle(10);
+
+// so let's inspect this on the console 
+// so circle 
+// here's our circle object it has a prototype 
+// look this prototype is the prototype for all circle objects 
+// that we create using our circle constructor 
+
+// Circle {radius: 10, draw: f}        <--- Circle
+// .draw: f ()
+// .radius: 10
+// .__proto__: Object                  <---- CircleBase
+// ..constructor: f Circle(radius)  
+// ..__proto__: Object
+
+// let's call this circleBase 
+
+// so every time we call the circle constructor to create a new circle object 
+
+const circle = new Circle(10);
+
+// this constructor will create a new object and set its prototype property to circle base 
+
+// in other words 
+
+// OBJECTS CREATED BY A GIVEN CONSTRUCTOR WILL HAVE THE SAME PROTOTYPE
+
+// so ALL CIRCLE OBJECTS CREATED BY THE CIRCLE CONSTRUCTOR WILL HAVE THE SAME PROTOTYPE 
+// and similarly ALL ARRAYS CREATED BY THE ARRAY CONSTRUCTOR WILL HAVE THE SAME PROTOTYPE 
+
+// now back here so this is our circle base 
+// circle base also has a prototype 
+// let's see what we have here 
+
+// what is this object that's objectBase right, the root object in JavaScript
+
+// Circle {radius: 10, draw: f}        <--- Circle
+// .draw: f ()
+// .radius: 10
+// .__proto__: Object                  <---- circleBase
+// ..constructor: f Circle(radius)  
+// ..__proto__: Object                 <---- objectBase
+// ...__constructor__: f Object()
+// ...etc
+
+// so this is what we have in memory we have 
+// the circleObject that inherits from circleBase and circleBase inherits from objectBase
+
+//                      ---> [ objectBase]
+//                     |
+//        ---> [ circleBase ]
+//       |
+//  [ Circle ]
+
+
+
+
+// --------------------------------------------------
+// 3.4 Prototypes - Property Attributes
+
+// all right now let me show you something interesting 
+
+// so I'm going to define a new object like person 
+// and set its name to mosh 
+// let's log it on the console person 
+// so here's our person object 
+
+let person = { name: 'Mosh' };
+console.log(person);
+
+// and in this prototype we have all these methods available 
+
+// {name: "Mosh"}
+// .name: "Mosh"
+// .__proto__: Object
+// ..constructor: f Object()
+// ..etc
+// ..toString: f toString()
+
+// so we can type person.toString and it works
+
+person.toString();
+
+console.log(person.toString());
+// output:
+// [object Object]
+
+// however if we iterate over the members of this object 
+// we're not going to see this method toString 
+
+// so a for loop let key in person 
+// let's just log the key on the console 
+// save 
+// so the only key we have here is name 
+
+for (let key in person)
+    console.log(key)
+// output:
+// name
+
+// NONE OF THE PROPERTIES AND METHODS DEFINED IN objectBase ARE VISIBLE HERE 
+
+// by the same token if we call Object.keys of person and then log it on the console 
+// again we only see the name property
+
+console.log(Object.keys(person));
+// output:
+// ["name"]
+
+// so how come we can't iterate over all these properties and methods defined in objectBase 
+
+// well the reason is because IN JAVASCRIPT 
+// OUR PROPERTIES HAVE ATTRIBUTES ATTACHED TO THEM 
+
+// SOMETIMES THESE ATTRIBUTES PREVENT A PROPERTY FROM BEING ENUMERATED 
+
+// let me show you what I mean 
+// so first let's get the prototype for person we call 
+// so this is our objectBase right 
+
+let objectBase = Object.getPrototypeOf(person);
+
+// now I want to show you the attributes attached to the toString property 
+// or more accurately toString method 
+
+// so we call 
+
+Object.getOwnPropertyDescriptor()
+
+// as the first argument we pass objectBase 
+// as the second argument we pass the name of the target property or method 
+// that is toString 
+// and this will return an object which we call a property descriptor 
+
+Object.getOwnPropertyDescriptor(objectBase, 'toString')
+
+// let me show you 
+// so let's store that in descriptor 
+// so now let's log this descriptor on the console
+
+let person = { name: 'Mosh' };
+let objectBase = Object.getPrototypeOf(person);
+let descriptor = Object.getOwnPropertyDescriptor(objectBase, 'toString');
+console.log(descriptor);
+
+// output:
+// {
+//     value: [Function: toString],
+//     writable: true,
+//     enumerable: false,
+//     configurable: true
+//   }
+
+
+// okay so here's our descriptor object look at the properties 
+// CONFIGURABLE IS TRUE THAT MEANS WE CAN DELETE THIS MEMBER IF YOU WANT TO 
+
+// ENUMERABLE IS FALSE AND THAT'S WHY WHEN WE ITERATED OVER OUR PERSONAL OBJECT 
+// WE COULDN'T SEE THE TOSTRING METHOD 
+
+// you also have WRITABLE SET TO TRUE WHICH MEANS WE CAN OVERWRITE THIS METHOD WE
+// CAN CHANGE ITS IMPLEMENTATION WE CAN SET ITS VALUE 
+
+// and here's THE VALUE PROPERTY WHICH IS SET TO A METHOD 
+// AND THIS IS WHERE WE HAVE THE DEFAULT IMPLEMENTATION OF THE toString METHOD 
+
+// now WHEN YOU CREATE YOUR OWN OBJECTS YOU CAN SET THESE ATTRIBUTES FOR YOUR PROPERTIES 
+
+// let me show you an example 
+// so we're gonna use our personal object 
+// we don't need these lines anymore 
+// earlier in the last section you learned about 
+
+Object.defineProperty();
+
+// we use this to define a getter and a setter for a property 
+
+// so as the first argument we pass person 
+// the second argument is the name of the target property which is name 
+// and THE THIRD ARGUMENT IS AN OBJECT WHICH IS OUR PROPERTY DESCRIPTOR OBJECT 
+// THIS IS WHERE WE ADD THE ATTRIBUTES TO THIS PROPERTY 
+
+Object.defineProperty(person, 'name', {
+
+});
+
+// so in the last section we used get and set to define a getter and a setter 
+
+Object.defineProperty(person, 'name', {
+    // get: function () { return name; },
+    // set: function (value) { name = value; }
+});
+
+// now we're going to use a different set of properties 
+// so I can set this to writable false and this will become read-only 
+
+// so if I set person.name to let's say John 
+// and then log it on the console 
+
+let person = { name: 'Mosh' };
+
+Object.defineProperty(person, 'name', {
+    writable: false
+});
+
+person.name = 'John';
+
+console.log(person);
+// output:
+// { name: 'Mosh' }
+
+
+// ok look the name is not changed 
+// so that's the writable attribute 
+
+// we have another attribute enumerable we can set this to false 
+// and then this will not show up in Object.keys 
+// so if you log Object.keys of person
+
+// look now we get an empty array in contrast if it was true it will show up here
+
+let person = { name: 'Mosh' };
+
+Object.defineProperty(person, 'name', {
+    enumerable: false
+});
+
+console.log(Object.keys(person));
+// output:
+// []
+
+// so BY DEFAULT ALL THESE ATTRIBUTES ARE TRUE
+// ALL PROPERTIES ARE WRITABLE, ENUMERABLE AND CONFIGURABLE 
+
+// so let's see what happens if we set configurable to false 
+// now we cannot delete this property so if I try to 
+// delete person.name nothing will happen 
+// so let's log the person on the console  
+// look the name property is still there
+
+let person = { name: 'Mosh' };
+
+Object.defineProperty(person, 'name', {
+    configurable: false
+});
+
+delete person.name;
+
+console.log(person);
+// output:
+// { name: 'Mosh' }
+
+
+
+
+// --------------------------------------------------
+// 3.5 Prototypes - Constructor Prototypes
+
+// so you have learned that every object in JavaScript 
+// except the rootObject has a prototype or a parent 
+
+// now THE PROPER WAY TO GET THE PROTOTYPE OF AN OBJECT 
+// IS USING object.getPrototypeOf() and here we pass an object
+
+object.getPrototypeOf(myObj);
+
+// and what we get here is exactly what we saw 
+// in chrome console under:
+
+// myObj.__proto___ (parent of myObj)
+
+// it's the same thing right,
+// so what we have here is THE PROTOTYPE OR THE PARENT OF myObj 
+
+// now one thing you need to know is that CONSTRUCTORS ALSO HAVE A PROTOTYPE PROPERTY 
+
+// so here we have the Circle constructor function 
+// and you know that in JavaScript functions are objects 
+// so they have properties and methods 
+// so here we can type:
+
+// Circle.
+
+// look these are all the properties and methods that
+// are available in every function 
+// so here's the prototype property 
+// what is this 
+
+Circle.prototype
+
+// THIS IS THE OBJECT THAT WILL BE USED AS THE PARENT 
+// FOR OBJECTS CREATED BY THE CIRCLE CONSTRUCTOR 
+
+// so back here if I want to put this together 
+// assuming that we have this myObj and this myObj is created by this constructor
+
+// this constructor has a prototype property 
+// and what we get here is exactly 
+// what we have here 
+
+// myObj.__proto___
+// Constructor.prototype()
+
+// so the object that will be used as the parent for objects created by this constructor 
+
+// let me show you this in action 
+// so I'm going to define an object an empty object
+
+let obj = {};
+
+// this object has a prototype property which is its parent 
+// and you know that this is what we call objectBase 
+// so we have these members like constructor hasOwnProperty and so on
+
+// obj.__proto__
+// .constructor: f Object()
+// .hawOwnProperty: f hasOwnProperty()
+
+// now you know that this object is created using the
+// Object constructor function
+
+// so when we use the object literal syntax ( = {} )
+// under the hood that's translated to a "new Object" 
+// so that's our constructor
+
+// now THIS CONSTRUCTOR HAS A PROTOTYPE PROPERTY 
+// and THIS IS THE OBJECT THAT WILL BE USED 
+// AS THE PROTOTYPE FOR ALL OBJECTS CREATED BY THIS CONSTRUCTOR
+
+// Object.prototype
+// .constructor: f Object()
+// .hawOwnProperty: f hasOwnProperty()
+
+// so look THIS IS OUR objectBase
+
+// so what I'm telling you is that BOTH THESE ARE EQUAL
+// obj.__proto__ (and) Object.prototype
+
+// THE PARENT FOR THIS OBJECT (obj.__proto__)
+// AND THE PROTOTYPE FOR THIS CONSTRUCTOR (Object.prototype)
+
+// let's take a look at another example 
+
+// so I'm gonna define an array empty array
+
+let array = [];
+
+// thisarray has a prototype proto 
+
+// array.__proto__
+// .concat: f concat()
+// .constructor: f Array()
+// .etc
+
+// and THIS IS THE OBJECT THAT INCLUDES ALL THE METHODS THAT CAN BE CALLED ON ARRAYS 
+// SO WE CALL THIS arrayBase 
+
+// now when we use an array literal ( = [] )
+// under the hood the array constructor will be called 
+// now THIS CONSTRUCTOR HAS A PROTOTYPE PROPERTY 
+// WHICH REFERENCES arrayBase, THE SAME OBJECT
+
+// Array.prototype
+// .concat: f concat()
+// .constructor: f Array()
+// .etc
+
+// okay now finally as one more example 
+// here we have a circle object
+
+circle
+
+// circle has a prototype 
+// we call this circleBase which doesn't have anything specific here 
+// it only has this constructor property 
+
+// circle
+// .Circle {radius: 1}
+// ..radius: 1
+// ..__proto__:
+// ...constructor: f Circle(radius)
+// ...__proto__: Object
+
+// now we created the circle object using 
+// "Circle" constructor
+
+// this constructor has a prototype property __proto__
+// which returns circleBase 
+
+// Circle.prototype
+// .{constructor: f}
+// ..constructor: f Circle(radius)
+// ..__proto__: Object
+
+// so these two objects are exactly the same
+
+
+
+
+// --------------------------------------------------
+// 3.6 Prototypes - Prototype vs Instance Members
+
+// now we have this Circle constructor with two members 
+
+// the radius property and the draw method just like before 
+
+// and we have two circle objects 
+// so let's Log these objects on the console
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.draw = function () {
+        console.log('draw');
+    }
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(2);
+
+console.log(c1);
+console.log(c2);
+// output:
+// Circle { radius: 1, draw: [Function (anonymous)] }
+// Circle { radius: 2, draw: [Function (anonymous)] }
+
+// c1 here's our object, we have this draw method 
+// let's log c2 and you can see we have this draw method here as well 
+
+// so with the current implementation 
+// if we have let's say a thousand circle objects in the memory 
+// we're going to have a thousand copies of the draw method 
+
+// now this is a very simplified example 
+// in a real world application your objects might have several methods 
+// so if you want to have a large number of these objects in the memory 
+// you're going to WASTE A LOT OF MEMORY BY KEEPING COPIES OF ALL THESE METHODS
+
+// so what's the solution well you know how PROTOTYPICAL INHERITANCE works 
+// WHEN WE ACCESS A PROPERTY OR A METHOD ON AN OBJECT 
+// JAVASCRIPT ENGINE FIRST LOOKS AT THE OBJECT ITSELF 
+// IF IT CAN'T FIND THAT PROPERTY OR METHOD IT WILL LOOK AT THE PROTOTYPE OF THAT OBJECT 
+
+// so now WE CAN TAKE THIS DRAW METHOD OUT OF THE CIRCLE OBJECT 
+// AND PUT IT IN ITS PROTOTYPE 
+
+// we're going TO HAVE A SINGLE INSTANCE OF THIS PROTOTYPE IN THE MEMORY 
+// WHICH WE CALL circleBase SO WE'RE GOING TO HAVE A SINGLE INSTANCE OF THE DRAW METHOD 
+
+// so how do we do that 
+
+// well in the last lecture you learned 
+// that every constructor has a prototype property so
+
+// Circle.Prototype 
+
+// and this is exactly the same as the prototype of our circle objects 
+
+// so for c1 let's say if you access the __proto__ property 
+// which we shouldn't because it's deprecated
+// but essentially these two properties are referencing the same object in memory
+// that's the circleBase 
+
+// Circle.prototype === c1.__proto__
+
+// so using Circle.Prototype 
+// we can quickly and safely access this object 
+
+// so you know that JavaScript objects are dynamic 
+// so we can always add something to them later 
+// so we can add the draw method here (Circle.prototype.draw)
+// and simply move the implementation right here (inside the Circle.prototype.draw Code Block)
+
+// and with that we no longer need the draw method on the object instance itself
+// (delete the draw method from inside the Circle constructor function)
+
+// save 
+// so now let's log our circles one more time 
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(2);
+
+console.log(c1);
+console.log(c2);
+// output:
+// Circle { radius: 1 }
+// Circle { radius: 2 }
+
+// c1 this object only has a radius property 
+// the draw method is on the prototype the circleBase object right 
+
+// and the same is true for c2 again we don't have the draw method 
+// it's on the prototype 
+
+// c1
+// .Circle {radius: 1}
+// ..radius: 1
+// ..__proto__:
+// ...draw: f ()
+// ...constructor: f Circle(radius)
+// ...__proto__: Object
+
+// c2
+// .Circle {radius: 2}
+// ..radius: 2
+// ..__proto__:
+// ...draw: f ()
+// ...constructor: f Circle(radius)
+// ...__proto__: Object
+
+// now because of the prototypical inheritance we can still access it so 
+// we can call c1 but draw and everything works
+
+c1.draw();
+
+// so ESSENTIALLY WE HAVE TWO KINDS OF PROPERTIES AND METHODS IN JAVASCRIPT 
+
+// we have INSTANCE PROPERTIES AND METHODS 
+// let's CALL THEM INSTANCE MEMBERS 
+// AND PROTOTYPE MEMBERS 
+
+// now let's take this to the next level 
+// so you know that every object has this toString method
+// by default it returns this string here 
+
+c1.toString();
+// output:
+// "[object Object]"
+
+// we can overwrite the implementation of this method 
+// and the prototype of our circle objects 
+
+// so here I'm gonna add Circle.Prototype.toString 
+// set it to a new function 
+// and here we're gonna return circle with radius 
+
+// now we need to access the radius property 
+// so we can use this.radius 
+// save the changes 
+// now c1 the toString 
+// and this is the new implementation
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+Circle.prototype.toString = function () { // modifying the toString method
+    return 'Circle with radius ' + this.radius;
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(2);
+
+console.log(c1.toString());
+// output:
+// Circle with radius 1
+
+// so back to our PROTOTYPICAL INHERITANCE 
+// WHEN WE CALL THIS METHOD JAVASCRIPT ENGINE LOOKS AT OUR CIRCLE OBJECT 
+// OBVIOUSLY WE DON'T HAVE THIS METHOD THERE 
+// THEN IT LOOKS AT ITS PROTOTYPE SO Circle.prototype 
+// WE HAVE IMPLEMENTED THIS METHOD HERE (as Circle.prototype.toString = function())
+// SO THIS IMPLEMENTATION WILL BE USED 
+
+// so here's the interesting part 
+// EVEN THOUGH WE HAVE ANOTHER IMPLEMENTATION OF THE toString METHOD ON objectBase
+// but THIS IMPLEMENTATION WILL BE USED BECAUSE THIS IS MORE ACCESSIBLE 
+
+// so THIS IS ALL ABOUT INSTANCE VERSUS PROTOTYPE MEMBERS 
+
+// and by the way remember that 
+// IN BOTH THESE KIND OF MEMBERS YOU CAN REFERENCE OTHER MEMBERS 
+
+// for example 
+// IN THE DRAW METHOD WHICH IS A PROTOTYPE METHOD 
+// I CAN EASILY CALL AN INSTANCE METHOD ON THE CIRCLE CLASS 
+
+// so let's add a method here call it this.move 
+// we set it to a function, console.log of move
+// now WE CAN REFERENCE THIS FUNCTION (or this METHOD more accurately) 
+// IN OUR PROTOTYPE METHOD
+// so this.move and then console.log of draw 
+// so let's test this 
+// and here are our two messages move and draw
+
+function Circle(radius) { // 
+    this.radius = radius; // Instance (Member) Method
+
+    this.move = function () { // definining a new Instance (Member) Method
+        console.log('move');
+    }
+}
+
+Circle.prototype.draw = function () { // Protoype (Member) Method
+    this.move(); // referencing this Instance (Member) Method in our Prototype (Member) Method
+    console.log('draw');
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(2);
+
+console.log(c1.draw());
+// output:
+// move
+// draw
+
+// by the same token 
+// IN AN INSTANCE METHOD WE CAN REFERENCE A PROTOTYPE MEMBER 
+// so let's reverse this 
+
+// here before moving the circle we want to draw it 
+// so we call this.draw 
+
+// now ESSENTIALLY WHAT IS HAPPENING HERE WE ARE CALLING THE DRAW METHOD
+// OBVIOUSLY IT'S NOT AN INSTANCE METHOD SO THE JAVASCRIPT ENGINE WILL FIND THIS
+// METHOD ON THE PROTOTYPE, SO EVERYTHING WILL CONTINUE TO WORK 
+
+// to demonstrate this let's go back to the draw method 
+
+// we shouldn't call move because otherwise 
+// we'll have a circular dependency so delete this 
+
+// save the changes 
+// now c1.move so we have draw and move
+
+function Circle(radius) {
+    this.radius = radius;
+
+    this.move = function () { // Instance (Member) Method
+        this.draw(); // JavaScript engine will find the draw method on the prototype
+        console.log('move');
+    }
+}
+
+Circle.prototype.draw = function () { // Protoype (Member) Method
+    console.log('draw');
+}
+
+const c1 = new Circle(1);
+const c2 = new Circle(2);
+
+console.log(c1.move());
+// output:
+// draw
+// move
+
+
+
+
+// --------------------------------------------------
+// 3.7 Prototypes - Iterating Properties
+
+// so I've simplified the example from the last lecture 
+
+// we have the circle object with two instance members 
+// radius and move 
+
+// and one prototype member which is called draw 
+
+function Circle(radius) {
+    // Instance Members
+    this.radius = radius;
+
+    this.move = function () {
+        console.log('move');
+    }
+}
+
+// Prototype Members
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const c1 = new Circle(1);
+
+// now one thing I want to emphasize here is that
+
+// IT DOESN'T MATTER WHEN YOU CHANGE THE PROTOTYPE 
+// so IN THIS CASE WE'RE MODIFYING THE PROTOTYPE BEFORE CREATING AN OBJECT 
+// YOU COULD CREATE AN OBJECT FIRST AND THEN MODIFY THE PROTOTYPE 
+// THE DRAW METHOD WILL STILL BE AVAILABLE ON THIS CIRCLE OBJECT
+
+// BECAUSE HERE WE'RE DEALING WITH OBJECT REFERENCES 
+
+// so WE HAVE A SINGLE OBJECT IN MEMORY 
+// AS SOON AS WE MODIFY THAT ALL THE CHANGES ARE IMMEDIATELY VISIBLE 
+// so save the changes, look we've got the draw message here
+
+function Circle(radius) {
+    // Instance Members
+    this.radius = radius;
+
+    this.move = function () {
+        console.log('move');
+    }
+}
+
+const c1 = new Circle(1); // create object first then modifying prototype after
+
+// Prototype Members
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+c1.draw(); // draw method STILL AVAILABLE
+// output:
+// draw
+
+// now in this lecture I'm gonna show you 
+// HOW TO ITERATE OVER INSTANCE VERSUS PROTOTYPE PROPERTIES 
+
+// so earlier you learn about Object.keys() method 
+
+// I'm gonna pass this c1 here 
+// let's see what we get on the console 
+// so Object.keys ONLY RETURNS INSTANCE MEMBERS 
+// RADIUS AND MOVE 
+// DRAW IS NOT THERE BECAUSE DRAW IS A PROTOTYPE MEMBER 
+
+console.log(Object.keys(c1));
+// output:
+// [ 'radius', 'move' ]
+
+// so that's something I want you to remember 
+// so Object.keys ONLY RETURNS INSTANCE MEMBERS 
+
+// okay what about THE FOR IN LOOP 
+// let me show you so for let key in c1 
+// let's just do a console.log of the key 
+
+for (let key in c1)
+    console.log(key)
+// output:
+// radius
+// move
+// draw
+
+// alright look here 
+// WE HAVE ALL THE INSTANCE AND PROTOTYPE MEMBERS 
+// SO WE GET THE DRAW METHOD AS WELL 
+
+// so remember THE FOR IN LOOP RETURNS ALL MEMBERS INSTANCE AND PROTOTYPE 
+
+// now in JavaScript language 
+// we often use the word "own" instead of instance 
+// so in some documents in some tutorials you may hear "own property" 
+// versus "prototype property"
+
+// let me show you a useful method 
+// so here let's c1.hasOwnProperty 
+// we passed the name of the property 
+// let's say radius 
+// THIS IS AN INSTANCE OR OWN PROPERTY 
+// so we get true 
+
+c1.hasOwnProperty('radius'); // radius is a INSTANCE MEMBER/PROPERTY or OWN PROPERTY
+
+console.log(c1.hasOwnProperty('radius'));
+// output:
+// true
+
+// but if we call has own property and pass draw 
+// we should get false 
+// because THIS IS A PROTOTYPE MEMBER OR A PROTOTYPE PROPERTY
+
+c1.hasOwnProperty('draw'); // draw is a PROTOTYPE MEMBER/PROPERTY
+
+console.log(c1.hasOwnProperty('draw'));
+// output:
+// false
+
+
+
+
+// --------------------------------------------------
+// 3.8 Prototypes - Avoid Extending the Built-in Objects
+
+// so you have learned how easy it is to modify the prototype of an object 
+
+// so you might be tempted to do something like this, so 
+
+// we're gonna add a new method to our arrays for shuffling an array 
+// now let's not worry about the algorithm for shuffling an array
+
+Array.prototype.shuffle = function () {
+    // ...
+}
+
+// now with this we can define an array like this 
+// and we will be able to call the shuffle method 
+
+const array = [];
+array.shuffle();
+
+// now while this is very easy to accomplish in JavaScript
+// THAT'S SOMETHING YOU SHOULD AVOID 
+// YOU SHOULD NOT MODIFY THE BUILT-IN OBJECTS IN JavaScript 
+
+// because it is possible that tomorrow you're going to use a library 
+// and in that library someone has also extended the array prototype 
+// and added a shuffle method but with a different implementation 
+
+// then you might end up spending the whole day debugging the problem 
+
+// also nothing stops the developers of JavaScript 
+// from adding this method to arrays in the future versions of JavaScript 
+
+// so HERE IS THE LESSON DON'T MODIFY OBJECTS YOU DON'T OWN
+
+// yes javascript is a dynamic language it makes it really easy 
+// to add properties and methods to an existing object 
+
+// BUT THAT DOESN'T MEAN THAT YOU SHOULD MODIFY THE BUILT-IN OBJECTS 
+
+// so 
+// DON'T OVERRIDE METHODS 
+// DON'T ADD NEW METHODS OR PROPERTIES 
+// and 
+// DON'T REMOVE EXISTING PROPERTIES AND METHODS 
+
+// because somewhere else in a library you might be using 
+// there might be code that is dependent and those methods in the built-in objects 
+
+// so IF YOU MODIFY THE BUILT-IN OBJECTS YOU WILL CREATE ALL SORTS OF ISSUES
+
+
+
+
+
+// --------------------------------------------------
+// 3.9 Prototypes - Prototypes Cheat Sheet
+
+// Every object (except the root object) has a prototype (parent). 
+// To get the prototype of an object:
+Object.getPrototypeOf(obj);
+
+// In Chrome, you can inspect "__proto__" property. ]
+// But you should not use that in the code. 
+
+// To get the attributes of a property:
+Object.getOwnPropertyDescriptor(obj, 'propertyName');
+
+// To set the attributes for a property:
+Object.defineProperty(obj, 'propertyName', {
+    configurable: false,    // cannot be deleted
+    writable: false,
+    enumerable: false
+});
+
+// Constructors have a "prototype" property. 
+// It returns the object 
+// that will be used as the prototype 
+// for objects created by the constructor. 
+Object.prototype === Object.getPrototypeOf({})
+Array.prototype === Object.getPrototypeOf([])
+
+// All objects created with the same constructor will have the same prototype. 
+// A single instance of this prototype will be stored in the memory. 
+const x = {};
+const y = {};
+Object.getPrototypeOf(x) === Object.getPrototypeOf(y); // returns true 
+
+// Any changes to the prototype will be immediately visible 
+// to all objects referencing this prototype. 
+
+// When dealing with large number of objects, 
+// it's better to put their methods on their prototype. 
+// This way, a single instance of the methods will be in the memory. 
+Circle.prototype.draw = function () { }
+
+// To get the own/instance properties:
+Object.keys(obj);
+
+// To get all the properties (own + prototype): 
+for (let key in obj) { }
+
+
+
+
+// --------------------------------------------------
+// 3.10 Prototypes - Exercise
+
+// now it's time for an exercise
+// so here's the stopwatch object 
+// that we created in the last section 
+
+// now in this exercise 
+// I want you to move the methods we have here like start stop and reset 
+// to the prototype of the stopwatch 
+
+// now before we get started I want to clarify something 
+// you should put methods on the prototype as an optimization technique 
+
+// so if you're working with a large number of objects of the same type 
+// you don't want to have multiple copies of these methods in memory 
+// in the case of a stopwatch we don't really have that requirement 
+
+// if you're gonna use stopwatch in a program we need only one instance 
+// so in this case we don't really need to put these methods on the prototype 
+
+// and as you will see putting these methods on the prototype will lead to another issue 
+
+// and that's part of the exercise you're going to work on 
+
+// so go ahead put these methods on the prototype 
+
+// and then notice that you will not be able to access these variables 
+// like running and start time 
+// because these variables are defined in this function (function Stopwatch())
+// they are within the scope of this function (function Stopwatch())
+
+// when you put the start method on the prototype 
+// you can only access the public members of the stopwatch 
+
+// so in order to access running you need to define 
+// this as a public read-only property on the Stopwatch 
+
+// and then access it using "this."
+
+// this.running = true
+
+// so that was a quick hint for you go ahead do this exercise 
+// and you will see my solution next
+
+// Original that needs to be edited
+function Stopwatch() {
+    let startTime, endTime, running, duration = 0;
+
+    this.start = function () {
+        if (running)
+            throw new Error('Stopwatch has already started.');
+
+        running = true;
+
+        startTime = new Date();
+    };
+
+    this.stop = function () {
+        if (!running)
+            throw new Error('Stopwatch is not started.');
+
+        running = false;
+
+        endTime = new Date();
+
+        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+        duration += seconds;
+    };
+
+    this.reset = function () {
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0;
+    };
+
+    Object.defineProperty(this, 'duration', {
+        get: function () { return duration; }
+    });
+}
+
+
+
+
+// --------------------------------------------------
+// 3.11 Prototypes - Solution
+
+// all right so here's my solution
+
+// I'm gonna SELECT THESE THREE METHODS START STOP AND RESET 
+// AND MOVE THEM OUTSIDE OF THE STOPWATCH FUNCTION 
+
+// now I'm gonna replace 
+this.start
+this.stop
+this.reset
+
+// with 
+Stopwatch.prototype.start
+Stopwatch.prototype.stop
+Stopwatch.prototype.reset
+
+// okay so these methods are now under prototype for the Stopwatch 
+
+// as you can see running 
+// iS NOT DEFINED ANYWHERE IN (Stopwatch.prototype.start = function())
+// IT'S DEFINED (in funciton Stopwatch())
+// AND WE DON'T HAVE ACCESS TO THAT 
+
+// THAT'S WHY WE NEED TO DEFINE THIS AS A READ-ONLY PROPERTY 
+// just like how we have expose the duration variable as a read-only property 
+
+// HERE WE NEED TO EXPOSE THESE OTHER VARIABLES AS READ-ONLY PROPERTIES 
+
+// now the problem with this is that it's going to pollute the interface of the stopwatch 
+// in our previous implementation our stopwatch had only four public members 
+// three methods start stop and reset and one public property that's the duration 
+
+// now we're going to add three extra properties 
+// and this is going to pollute the interface of stopwatch 
+// and this is against the idea of abstraction in object-oriented programming 
+
+// because as we explained earlier we want to keep the interface of our objects clean 
+// and simple just like a DVD player 
+// we don't want to expose all the details to the outside 
+
+// so now let's define three public properties 
+// actually to save time I'm gonna duplicate this a couple of times 
+
+// now we want to expose startTime and here you want to return startTime 
+Object.defineProperty(this, 'startTime', {
+    get: function () { return startTime; }
+});
+
+// next we want to expose endTime
+Object.defineProperty(this, 'endTime', {
+    get: function () { return endTime; }
+});
+
+// this time I'm going to expose running 
+Object.defineProperty(this, 'running', {
+    get: function () { return running; }
+});
+
+// okay now back to our prototype methods 
+
+// so here (in Stopwatch.prototype.start) I'm going to replace 
+running
+// with 
+this.running
+// and 
+startTime
+//with 
+this.startTime
+
+// I'm going to make the same changes to the other methods 
+// so here in the stop method, replace
+running
+// with
+this.running
+// and
+endTime
+// with 
+this.endTime
+
+// all right so here's what we have now 
+
+// now THERE'S A TRICKY SITUATION HERE IN THIS STOP METHOD 
+// and the last line we're adding the seconds to the duration 
+
+Stopwatch.prototype.stop = function () {
+    if (!this.running)
+        throw new Error('Stopwatch is not started');
+
+    this.running = false;
+
+    this.endTime = new Date();
+
+    const seconds = (this.endTime.getTime() - this.startTime.getTime()) / 1000;
+
+    duration += seconds; // DURATION IS A PUBLIC READ-ONLY PROPERTY 
+}
+
+// DURATION IS A PUBLIC READ-ONLY PROPERTY 
+// SO I CANNOT MODIFY IT LIKE THIS 
+
+this.duration += seconds;
+
+// BECAUSE CURRENTLY IT DOESN'T HAVE A SETTER 
+
+// now IF WE GO BACK TO OUR Stopwatch Constructor (function Stopwatch)
+// here WE CAN DEFINE A SETTER FOR THIS TO SOLVE THIS PROBLEM 
+
+// BUT THIS IS GOING TO LEAD TO ANOTHER PROBLEM 
+// SO LET ME ADD THIS FIRST AND THEN WE WILL TALK ABOUT THAT 
+
+// so setter a function that takes a value 
+// and here we simply set duration to this value 
+function Stopwatch() {
+    let duration = 0;
+
+    Object.defineProperty(this, 'duration', {
+        get: function () { return duration; },
+        set: function (value) { duration = value; } // giving duration a SETTER
+    });
+}
+
+// now back to the stop method 
+// so we can access the duration property and update its value 
+
+Stopwatch.prototype.stop = function () {
+    //...
+    this.duration += seconds;
+}
+
+// similarly in the reset method we can set this.duration 
+
+Stopwatch.prototype.reset = function () {
+    //...
+    this.duration = 0;
+}
+
+// but THIS WAS A TERRIBLE IDEA 
+// why 
+// because I CAN CREATE A STOPWATCH HERE 
+// new stopwatch and THEN SIMPLY MODIFY THIS DURATION FROM THE OUTSIDE 
+
+const sw = new Stopwatch();
+sw.duration = 10;
+
+// this will completely mess up with the state of this object 
+// remember this principle 
+// YOUR OBJECTS SHOULD ALWAYS BE IN A VALID STATE 
+// YOU DON'T WANT YOUR OBJECTS TO LIE 
+// YOU DON'T WANT THEM TO BE UNRELIABLE AND UNTRUSTWORTHY 
+
+// THAT'S WHY WE USE ABSTRACTION 
+// WITH ABSTRACTION WE HIDE THE UNNECESSARY COMPLEXITY 
+// AND EXPOSE VERY FEW MEMBERS THAT WOULD ALLOW 
+// THE CLIENTS OF AN OBJECT TO WORK WITH IT 
+// WITHOUT MESSING UP THIS STATE 
+
+// so I designed this exercise for you 
+// SO YOU CAN SEE THAT SOMETIMES YOU MAKE SOME CHANGES TO YOUR CODE 
+// FOR OPTIMIZATION REASONS, BUT YOU END UP CREATING MANY OTHER ISSUES 
+
+// in this program we didn't have any performance problems 
+// and we knew that we're not going to have let's say a thousand instances 
+// of the stopwatch in the memory 
+
+// SO PUTTING ALL THESE METHODS ON THE PROTOTYPE WAS A VERY BAD IDEA 
+// TO START WITH IT BROKE THE ABSTRACTION PRINCIPLE 
+// AND NOW WE'RE EXPOSING THIS DURATION PROPERTY 
+// SO WE CAN MODIFY IT FROM THE OUTSIDE 
+
+// so ESSENTIALLY THIS STOPWATCH OBJECT IS NOW USELESS 
+
+// there is a FAMOUS SAYING
+// "PREMATURE OPTIMIZATION IS THE ROOT OF ALL EVILS" 
+
+// and here we have A REAL EXAMPLE OF PREMATURE OPTIMIZATION
+
+function Stopwatch() {
+
+    let startTime = 0;
+    let endTime = 0;
+    let running = false;
+    let duration = 0;
+
+    Object.defineProperty(this, 'startTime', {
+        //writable: false,   // i tried to use these to set read-only flags
+        get: function () { return startTime; } // actually needed to make a GETTER
+    });
+
+    Object.defineProperty(this, 'endTime', {
+        get: function () { return endTime; }
+    });
+
+    Object.defineProperty(this, 'running', {
+        get: function () { return running; }
+    });
+
+    Object.defineProperty(this, 'duration', {
+        get: function () { return duration; },
+        set: function (value) { duration = value; }
+        // we can define a SETTER here for this, but this leads to another problem 
+        // because now we can SET the value sw.duration = 10, from the OUTSIDE
+        // this goes against the principles of the DVD Player "ABSTRACTION"
+    });
+}
+
+Stopwatch.prototype.start = function () {
+    if (this.running)
+        throw new Error('Stopwatch already started.');
+
+    this.running = true;
+
+    this.startTime = new Date();
+};
+
+Stopwatch.prototype.stop = function () {
+    if (!this.running)
+        throw new Error('Stopwatch is not started');
+
+    this.running = false;
+
+    this.endTime = new Date();
+
+    const seconds = (this.endTime.getTime() - this.startTime.getTime()) / 1000;
+
+    this.duration += seconds;
+    // duration is a public read only property
+    // because currently it doesnt have a SETTER
+    // when we give it a SETTER, we can update its value, but also from the OUTSIDE!
+};
+
+Stopwatch.prototype.reset = function () {
+    this.startTime = 0;
+    this.endTime = 0;
+    this.running = false;
+    this.duration = 0;
+};
+
+const sw = new Stopwatch();
+sw.duration = 10;
+
+
+
+
+// --------------------------------------------------
+// 4.1 Prototypal Inheritance - Creating Your Own Prototypical Inheritance
+
+// so here we have a circle object 
+// with a radius property 
+// and two methods that are defined on it's prototype 
+// you have two draw method 
+// and a duplicate method 
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+Circle.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+// now let's imagine tomorrow we're gonna add a square object here 
+// and that square object should also have a duplicate method 
+// with the exact same implementation 
+
+// WE DON'T WANT TO REPEAT THIS IMPLEMENTATION 
+// in other words 
+// we don't want to define a square constructor 
+// and then redefine the duplicate method 
+// and the prototype of this constructor 
+// so Square the prototype that duplicate 
+
+function Square() {
+
+}
+
+Square.prototype.duplicate = function () {
+
+}
+
+// WE DON'T WANT TO DO THIS RIGHT 
+
+// INSTEAD WE WANT TO USE INHERITANCE 
+// so WE CAN DEFINE A SHAPE OBJECT 
+// AND PUT THIS DUPLICATE METHOD THERE 
+// AND THEN HAVE CIRCLE AND SQUARE INHERIT IT FROM THE SHAPE OBJECT 
+
+// so let me show you how to do this 
+// first I'm gonna delete everything about a square 
+// because once you learn how to inherit a circle from a shape 
+// you can easily have Square inherit from the shape object 
+// so delete 
+
+// now let's define the shape constructor 
+
+// next we want to move this duplicate method 
+// and put it on the prototype of the shape 
+// so shape that prototype that duplicate okay
+
+// so to make sure we're on the same page
+// let's define two objects here one is a shape (S) new Shape
+// and the other is a circle (c) new Circle with radius of 1 
+
+function Shape() {
+
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+console.log(s);
+console.log(c);
+
+// now back to the console
+// so here's our shape 
+// IT INHERITS FROM THIS OBJECT WHICH WE CALL shapeBase 
+// and in shapeBase we have the duplicate method 
+// and as we can see shapeBase INHERITS FROM THIS OBJECT WHICH IS OUR objectBase 
+// the root of all objects in JavaScript
+
+// s
+// .Shape {}
+// ..__proto__: Object  <-- shapeBase (shape inherits from shapeBase)
+// ...duplicate:f ()
+// ...constructor: f Shape()
+// ...__proto__: Object  <-- objectBase (shapeBase inherbits from objectBase)
+
+// okay we have the exact same structure in our circle 
+// let's verify that 
+// so we have a circle 
+// circle has a radius it inherits from let's call this circleBase 
+// in circleBase we have the draw method 
+// and as you can see a circleBase inherits from objectBase 
+
+// c
+// .Circle { radius: 1}
+// ..__proto__: Object  <-- circleBase (circle inherits from circleBase)
+// ...draw:f ()
+// ...constructor: f Shape()
+// ...__proto__: Object  <-- objectBase (circleBase inherits from objectBase)
+
+// so here is a visualization of what we have in memory 
+// we have this (c) object which inherits from circleBase 
+// which is essentially a Circle.prototype 
+// and this circleBase inherits from objectBase 
+
+// similarly we have (s) which inherits from shapeBase 
+// and this is the same object referenced by Shape.prototype
+// and this object inherits from objectBase 
+
+//                      ---> [ objectBase]
+//                     |
+//        ---> [ circleBase ]
+//       |        (Circle.prototype)
+//     [ c ]
+
+//                      ---> [ objectBase]
+//                     |
+//        ---> [ shapeBase ]
+//       |        (Shape.prototype)
+//     [ s ]
+
+
+// now TO SETUP INHERITANCE HERE 
+// WE WANT TO HAVE circleBase INHERIT FROM shapeBase 
+
+//                                       ---> [ objectBase]
+//                                      |
+//        ---> [ circleBase ] ---> [ shapeBase ]
+//       |      
+//     [ c ]
+
+// how do we do this? it's really easy 
+
+// in JavaScript WE HAVE A METHOD FOR CREATING AN OBJECT WITH A GIVEN PROTOTYPE 
+// so 
+
+Object.create();
+
+// look at THE ARGUMENT HERE 
+// THAT'S THE OBJECT TO USE AS A PROTOTYPE 
+// so WE WANT A NEW circleBase OBJECT THAT INHERITS FROM shapeBase INSTEAD OF objectBase right
+
+// now shapeBase is Shape.prototype right 
+// so here we pass Shape.prototype
+// and THIS RETURNS AN OBJECT THAT INHERITS FROM shapeBase
+
+Object.create(Shape.prototype);
+
+// NOW ALL WE HAVE TO DO IS TO USE THIS OBJECT AS THE PROTOTYPE FOR OUR circles 
+// SO WE RESET Circle.prototype TO THIS NEW OBJECT
+
+Circle.prototype = Object.create(Shape.prototype);
+
+// so BEFORE THIS LINE 
+// our circleBase or Circle.prototype was like this 
+// so Circle.prototype WAS AN OBJECT THAT INHERITED FROM Object.prototype (which we call objectBase)
+// right, so THIS WAS THE IMPLICIT RELATIONSHIP 
+
+Circle.prototype = Object.create(Object.prototype); // inherits from objectBase (BEFORE changing the relationship)
+
+// NOW WE CHANGE circleBase or Circle.prototype 
+// TO A NEW OBJECT THAT INHERITS FROM Shape.prototype or shapeBase
+
+Circle.prototype = Object.create(Shape.prototype); // inherits from shapeBase (AFTER changing the relationship)
+
+// ok so let's detele this line 
+// (Circle.prototype = Object.create(Object.prototype);
+// now save the changes 
+
+// back in the console let's look at what we have
+
+// so here's our shape (s)
+
+// s
+// .Shape {}
+// ..__proto__: Object  <-- [1] shapeBase
+// ...duplicate:f () <-- (duplicate method)
+// ...constructor: f Shape()
+// ...__proto__: Object  <-- [2] objectBase
+
+// [1] shape (s) inherits from shapeBase 
+// here we have the duplicate method and
+// [2] shapeBase inherits from objectBase 
+// so far so good
+
+// now let's take a look at the circle (c)
+
+// c
+// .Circle { radius: 1}
+// ..radius:1
+// ..__proto__: Shape  <-- [1] circleBase (it says Shape here because it shows the PARENT for that Object)
+// ...draw:f ()  <-- (draw method)
+// ...__proto__: Object  <-- [2] shapeBase (circleBase inherits from shapeBase)
+// ....duplicate: f ()   <-- (duplicate method)
+// ....constructor: f Shape ()
+// ....__proto__: Object <-- [3] objectBase (shapeBase inherits from objectBase)
+
+
+// [1] so circle (c) INHERITS FROM circleBase 
+// ( now don't worry about this Shape here (..__proto__: Shape)
+// this doesn't mean that this is the shape object, 
+// this is a circleBase object, 
+// what you see here (..__proto__: Shape) is the parent for that object, 
+// let me explain what I mean, so let's expand this )
+// in circleBase we have the draw method, perfect 
+// [2] now circleBase INHERITS FROM shapeBase 
+// and that's why we have shape here (..__proto__: Shape)
+// let's look at the prototype 
+// look this is shapeBase, we have the duplicate method 
+// [3] and shapeBase INHERITS FROM objectBase
+
+// so now with all this 
+// THE CIRCLE OBJECT HAS A DRAW METHOD 
+
+c.draw();
+
+// IT ALSO HAS THE DUPLICATE METHOD THAT IT INHERITS FROM THE SHAPE OBJECT
+
+c.duplicate();
+
+// so THIS IS PROTOTYPICAL INHERITANCE IN ACTION
+
+// FINAL CODE
+function Shape() {
+
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+
+
+
+// --------------------------------------------------
+// 4.2 Prototypal Inheritance - Resetting the Constructor
+
+// now there's a tiny problem with this implementation 
+// let me comment out this line 
+// and go back to the console 
+
+function Shape() {
+
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+// Circle.prototype = Object.create(Shape.prototype); // Commented Out
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+
+// earlier I told you that every object in JavaScript 
+// has a constructor property 
+// that returns the function that was used 
+// to construct or create that object 
+
+// let's take a look at our circle object 
+// so this circle 
+// look at its prototype this is essentially Circle.prototype 
+
+// c
+// .Circle {radius: 1}
+// ..__proto__: Object 
+
+// right here we have this constructor property
+// which references our circle function 
+
+// c
+// .Circle {radius: 1}
+// ..__proto__: Object
+// ...draw: f ()
+// ...constructor: f Circle(radius)   <-- constructor property
+// ...__proto__: Object
+
+// now with this technically we can create a circle object 
+// like this
+
+Circle.prototype
+
+// that returns this object here right (constructor: f Circle(radius))
+
+// and here we have the constructor property 
+// and this returns this circle constructor function right (f Circle(radius))
+
+Circle.prototype.constructor
+
+// so technically we can new up this expression 
+// and pass a radius of 1 
+// and this returns a circle object 
+
+new Circle.prototype.constructor(1)
+
+// so THIS EXPRESSION IS EQUIVALENT TO 
+
+new Circle(1)
+
+// THEY'RE EXACTLY THE SAME 
+
+// now OBVIOUSLY WE USE THIS FORM BECAUSE IT'S SHORTER AND CLEANER 
+// BUT IN SOME RARE CIRCUMSTANCES 
+// YOU MAY GET A CONSTRUCTOR FUNCTION SOMEWHERE IN YOUR APPLICATION
+// AND YOU MAY WANT TO DYNAMICALLY CREATE AN OBJECT BASED ON THAT CONSTRUCTOR FUNCTION 
+
+// so there YOU CAN ACCESS THE PROTOTYPE PROPERTY 
+// AND FROM THERE YOU GET THE CONSTRUCTOR 
+// and THEN USE THE NEW OPERATOR 
+
+// now let's see what happens when we uncomment this line 
+
+// Circle.prototype = Object.create(Shape.prototype); // Commented Out
+
+// so back in the console 
+// let's take a look at the circle one more time 
+// so 
+
+// c
+// .Circle {radius: 1}
+// radius: 1
+// ..__proto__: Shape
+// ...draw: f ()
+// ...__proto__: Object
+
+// look we no longer have that constructor property here 
+
+// so let's look at the prototype for this object 
+
+// c
+// .Circle {radius: 1}
+// radius: 1
+// ..__proto__: Shape
+// ...draw: f ()
+// ...__proto__: Object
+// ....duplicate: f ()
+// ....constructor: f Shape   <-- constructor property (returning the Shape function)
+// ....__proto__: Object
+
+// here we have the constructor property 
+// but this is returning the Shape function 
+// not the Circle function 
+
+// in other words 
+// with what we have now 
+// WE NO LONGER CAN CREATE CIRCLE OBJECTS BASED ON THIS CONSTRUCTOR IN A DYNAMIC FASHION
+
+// so if we get this circle constructor dynamically in a function 
+
+Circle.
+
+    // and then try to access its prototype property 
+
+    Circle.prototype
+
+// and then the constructor 
+
+Circle.prototype.constructor
+
+// and then new that up 
+
+new Circle.prototype.constructor()
+// output:
+// Shape {}
+
+// look we get a Shape object not a circle object 
+
+// THE REASON WE'RE HAVING THIS PROBLEM 
+// IS BECAUSE WE'VE RESET THE PROTOTYPE OF THE CIRCLE 
+
+// before this line the prototype of the circle had this constructor property 
+// so Circle.prototype.constructor this was set to this Circle constructor
+
+Circle.prototype.constructor = Circle;
+
+// that's why we could new up a circle like this 
+
+new Circle.prototype.constructor();
+
+// this is exactly like newing up a circle object right 
+
+new Circle();
+
+// so as a best practice 
+// WHENEVER YOU RESET THE PROTOTYPE OF AN OBJECT YOU SHOULD ALSO RESET THE CONSTRUCTOR 
+
+// so here we should set Circle.prototype.constructor
+// we should that to the Circle constructor function 
+
+Circle.prototype.constructor = Circle;
+
+// let's save the changes
+
+function Shape() {
+
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+
+// now let's inspect (c) one more time 
+
+// c
+// .Circle {radius: 1}
+// ..radius: 1
+// ..__proto__: Shape
+// ...constructor: f Circle(radius)   <--constructor property is referencing the Circle function
+// ...draw: f ()
+// ...__proto__: Object
+// ....duplicate: f ()
+// ....constructor: f Shape()   <--- shapeBase
+// ....__proto__: Object
+
+// so here's the prototype for the circle 
+// you can see constructor is referencing the circle function beautiful 
+// we have the draw method which is part of the prototype for circles 
+// and the rest is exactly like before 
+
+// so this is shapeBase or the prototype for shapes 
+// where we have the duplicate method
+
+// now we can new up a circle like this so 
+// Circle.prototype.constructor has one as the radius
+// and we get a circle object 
+
+Circle.prototype.constructor(1)
+// output:
+// Circle {radius: 1}
+
+// so one more time 
+// WHENEVER YOU RESET THE PROTOTYPE 
+// AS A BEST PRACTICE MAKE SURE TO RESET THE CONSTRUCTOR AS WELL
+
+
+
+
+// --------------------------------------------------
+// 4.3 Prototypal Inheritance - Calling the Super Constructor
+
+// alright now let's take this example to the next level 
+
+// I'm gonna modify the shape constructor and introduce a color parameter 
+
+// we want every shape to have a color 
+// so here we set this.color to color 
+
+function Shape(color) { // color parameter introduced
+    this.color = color; // color property set
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius) {
+    this.radius = radius;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+// now with the current implementation 
+// when we create a circle
+// we only pass the radius 
+// so if we log (c) on the console 
+// we can only see the radius property 
+// there is no color here 
+
+// c
+// .Circle {radius: 1}
+// ..radius: 1
+// ..__proto__: Shape
+
+// but from an inheritance point of view 
+// this circle object should have a color property 
+// and that should be initialized at the time of creating a circle 
+
+// how do we do this? very easy 
+
+// here in the circle constructor 
+// we should call the shape constructor 
+
+// now one easy way to do this 
+// which actually doesn't work 
+// is like this 
+
+// so we call Shape() it's a function right 
+// we need to pass a color so let's add the color parameter 
+// here and simply pass that to this shape function 
+
+function Circle(radius, color) { // added 2nd parameter color
+    Shape(color); // call the Shape function with color parameter
+
+    this.radius = radius;
+}
+
+// now let's modify this line 
+// where we create a circle object 
+// and pass an argument for the color 
+// save the changes 
+// let's look at the circle (c)
+
+const c = new Circle(1, 'red');
+console.log(c)
+
+// c
+// .Circle {radius: 1}
+
+// we don't have the color property, we only have the radius 
+// why didn't it work?
+
+// well earlier I told you that WHEN YOU USE THE "new" OPERATOR 
+// THREE THINGS HAPPEN 
+// THIS NEW OPERATOR CREATES A NEW EMPTY OBJECT 
+// and THEN SETS "this" TO POINT TO THAT OBJECT 
+// so here we set the radius property on that new object 
+// and FINALLY THAT NEW OBJECT WILL BE RETURNED FROM THIS CONSTRUCTOR, right 
+
+// also I told you that IF YOU DON'T USE THE "new" OPERATOR 
+// this by default will point to the global object which is window 
+// in the browser and global in node 
+
+// so the reason this didn't work is because let me put this back here 
+
+// here we're calling the shape function ( Shape(color); )
+// and by default this. in this function (Shape) 
+// will point to the global object 
+
+// so WE DIDN'T SET THE COLOR PROPERTY ON THE NEW INSTANCE OF THE CIRCLE OBJECT 
+// WE SET IT ON THE WINDOW OBJECT 
+
+// let's verify that, window.color, look it's red 
+
+window.color
+// output:
+// "red"
+
+// so how do we fix this problem 
+// WE DON'T WANT TO USE THE NEW OPERATOR HERE 
+// BECAUSE THIS WILL CREATE ANOTHER NEW OBJECT 
+// AND THEN SET THE COLOR PROPERTY ON THAT OBJECT 
+
+// YOU WANT TO USE THE OBJECT THAT IS REFERENCED BY "this" 
+
+// so TO FIX THIS PROBLEM 
+// WE NEED TO CALL THE Shape FUNCTION (inside the code block of function Circle(radius, color))
+// AND SET "this" (this.color inside function Shape(color) 
+// TO POINT TO THE NEW INSTANCE OF THE CIRCLE OBJECT 
+
+// earlier I told you that every function in JavaScript is an object 
+// so 
+
+Shape.;
+
+// this is the shape object with these properties and methods 
+
+// you also learnt about the call method 
+
+// so we can call this Shape function 
+
+Shape.call();
+
+// and look at the first argument of the call method thisArg 
+// so the object to be used as the current object
+
+// now here we can pass this 
+// and this is the instance of the circle object 
+
+Shape.call(this);
+
+// we're gonna use the same instance here 
+// ( in function Shape(color) { this.color = color } )
+
+// alright now we pass our arguments 
+// in this case we want to pass the color argument 
+
+Shape.call(this, color);
+
+// and this will solve the problem 
+// save the changes back in the console 
+// see now our circle has two properties 
+
+function Shape(color) { // color parameter introduced
+    this.color = color; // color property set
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle(radius, color) {
+    Shape.call(this, color);
+
+    this.radius = radius;
+}
+
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+const s = new Shape();
+const c = new Circle(1);
+
+console.log(c);
+// output:
+// Circle { color: 'red', radius: 1 }
+
+// so THIS IS HOW YOU CALL THE SUPER CONSTRUCTOR
+
+
+
+
+// --------------------------------------------------
+// 4.4 Prototypal Inheritance - Intermediate Function Inheritance
+
+// so we have set up our inheritance chain properly 
+
+// now let's create another object 
+
+// like a square that inherits from the shape 
+
+// so that should be very easy 
+// we create a constructor square 
+// it takes a size we set the size 
+
+function Square(size) {
+    this.size = size;
+}
+
+// now we want this square to inherit from the shape 
+
+// so I'm going to copy these two lines for resetting the prototype here
+// and then change this to square and square 
+// of course we need to change this one more time 
+
+function Square(size) {
+    this.size = size;
+}
+Square.prototype = Object.create(Shape.prototype);
+Square.prototype.constructor = Square;
+
+// now with this we can create a square object 
+// new square with size 10 
+
+const sq = new Square(10);
+
+// let's inspect this 
+
+// sq
+// .Square {size: 10}
+// ..size: 10
+// ..__proto__
+// ...constructor: f Square(size)
+// ...__proto__:
+// ....duplicate: f ()
+// ....constructor: f Shape (color)
+// ....__proto__: Object
+
+
+// so we have the size property 
+// here's the prototype 
+// we don't have any methods in the prototype for the square 
+// let's look at its parent prototype 
+// so here we have the duplicate method that we inherited from the shape object 
+// so we can call 
+
+square.duplicate();
+
+// and everything works beautifully
+
+// however these two lines 
+// for setting up the prototype chain is a little bit noisy 
+
+// and as we define multiple objects this logic gets in the way 
+// and chances are you might make a mistake along the way 
+
+// so LET'S REFACTOR THIS CODE 
+// and EXTRACT THESE TWO LINES INTO A FUNCTION THAT WE CAN REUSE 
+
+// so here I'M GOING TO DEFINE A FUNCTION CALLED EXTEND 
+// THAT TAKES TWO PARAMETERS CHILD AND PARENT 
+
+function extend(Child, Parent) {
+
+}
+
+// and note that here the first letter of these parameters is uppercase 
+// because I'm expecting these to be constructor functions 
+
+// so now let's put these two lines inside this function 
+// and change Circle to Child and Shape to Parent
+
+function extend(Child, Parent) {
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+// NOW WE HAVE ENCAPSULATED THIS LOGIC SOMEWHERE THAT WE CAN REUSE
+
+// so let's put this further up 
+// I'm going to put it before the circle constructor
+
+// so we define a constructor 
+// and then we can call extend pass Circle and Shape 
+// we extend the Circle with the Shape
+
+extend(Circle, Shape);
+
+// and then we can add other stuff in the prototype for circle 
+
+// now let's make the same change for our squares 
+// so instead of these two lines here 
+
+// right after we define the constructor function 
+// we call extend Square with Shape 
+
+extend(Square, Shape);
+
+// save the changes 
+// let's make sure everything works 
+// so let's define a square then call duplicate 
+
+const sq = new Square(10);
+sq.duplicate();
+
+// beautiful 
+// SO THIS EXTEND FUNCTION IS 
+// WHAT WE CALL INTERMEDIATE FUNCTION INHERITANCE
+
+function Shape(color) {
+    this.color = color;
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function extend(Child, Parent) {
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+function Circle(radius, color) {
+    Shape.call(this, color);
+
+    this.radius = radius;
+}
+
+extend(Circle, Shape);
+// Circle.prototype = Object.create(Shape.prototype);
+// Circle.prototype.constructor = Circle;
+
+Circle.prototype.draw = function () {
+    console.log('draw');
+}
+
+function Square(size) {
+    this.size = size;
+}
+
+extend(Circle, Shape);
+// Square.prototype = Object.create(Shape.prototype);
+// Square.prototype.constructor = Square;
+
+const s = new Shape();
+const c = new Circle(1);
+
+const sq = new Square(10);
+
+sq.duplicate();
+
+
+
+
+
+// --------------------------------------------------
+// 4.5 Prototypal Inheritance - Method Overriding
+
+// I have simplified the code from the last lecture 
+// so we can focus on one concept
+
+// so let's see what we have here 
+// we have our extend function
+// we have a very simple shape constructor 
+// this shape has this duplicate method on its prototype
+// after that we have the circle constructor 
+// we have the circle inherit from the shape 
+// and finally we create a new circle object 
+
+// so now if you go on the console and type 
+// c.duplicate()
+// we get duplicate on the console 
+
+function extend(Child, Parent) { // extend function
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+function Shape() { // shape constructor
+}
+
+Shape.prototype.duplicate = function () { // duplicate method on shape prototype
+    console.log('duplicate');
+}
+
+function Circle() { // circle constructor
+}
+
+extend(Circle, Shape); // we have the circle inherit from the shape  
+
+const c = new Circle(1); // we create a new circle object 
+
+c.duplicate();
+// output:
+// "duplicate"
+
+// now SOMETIMES AS YOU WORK WITH INHERITANCE 
+// YOU MAY FACE A SITUATION WHERE 
+// THIS IMPLEMENTATION THAT YOU HAVE DEFINED 
+// IN A PARENT OBJECT MAY NOT WORK, OR MAY NOT BE IDEAL, IN A CHILD OBJECT 
+
+// so let's imagine this algorithm for duplicating a shape 
+// works for most of the shape objects
+// but MAYBE IT SHOULD BEHAVE DIFFERENTLY FOR CIRCLE OBJECTS 
+
+// what should we do?
+// that's when we use METHOD OVERRIDING 
+// so WE OVERRIDE A METHOD THAT IS DEFINED IN THE baseObject 
+
+// and it's very simple 
+// all we have to do is to redefine this (Shape.protoype.duplicate) method in the circle object 
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+// so I'm going to copy this 
+
+// here we have the constructor 
+// we extend it 
+// then after that we redefine this (duplicate method) on circle.prototype 
+
+function Circle() {
+}
+
+extend(Circle, Shape);
+
+Circle.prototype.duplicate = function () { // duplicate method on shape prototype
+    console.log('duplicate circle');
+}
+
+
+// IT'S VERY IMPORTANT TO PUT THIS AFTER EXTENDING THE CIRCLE 
+// BECAUSE AT THIS POINT WE ARE RESETTING THE PROTOTYPE 
+
+// so IF WE DEFINE THIS (Circle.prototype.duplicate) BEFORE RESETTING THE PROTOTYPE 
+// THEN THIS IMPLEMENTATION IS GOING TO DISAPPEAR 
+// okay, so let's put this back here 
+
+// now in this new implementation 
+// I'm gonna change the message to 'duplicate circle'
+// save the changes 
+// back in the console 
+
+c.duplicate();
+// output:
+// "duplicate circle"
+
+// note that we get the 'duplicate circle' message
+
+// so THE REASON THIS WORKS GOES BACK TO HOW PROTOTYPICAL INHERITANCE WORKS IN JAVASCRIPT 
+
+// WHEN WE ACCESS A PROPERTY OR A METHOD ON AN OBJECT 
+// JAVASCRIPT ENGINE WALKS UP THE PROTOTYPE CHAIN 
+// AND PICKS THE FIRST IMPLEMENTATION
+
+// SO EVEN THOUGH IN THIS HIERARCHY WE HAVE IMPLEMENTED THE DUPLICATE METHOD 
+// BOTH ON THE PARENT AND CHILD OBJECTS 
+// THE IMPLEMENTATION IN THE CHILD OBJECT WILL BE USED 
+
+// now SOMETIMES YOU MAY WANT TO CALL THE IMPLEMENTATION ON THE PARENT OBJECT AS WELL 
+
+// let me show you how to do this 
+
+// so here in (Circle.prototype.duplicate)
+// let's imagine we're going to call the duplicate method on the parent or the shapeObject 
+
+// if you're not using this:
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+// in this implementation 
+
+// we can simply call that like a regular function
+
+// so Shape.prototype.duplicate() we call it like this 
+
+Circle.prototype.duplicate = function () {
+    Shape.prototype.duplicate();
+
+    console.log('duplicate circle');
+}
+
+// now IF YOU'RE USING "this" IN THIS IMPLEMENTATION 
+// then WE NEED TO USE THE "call" METHOD TO SET THE CONTEXT FOR "this"
+
+// so we call the call method and pass "this" as the context for the current object
+
+Circle.prototype.duplicate = function () {
+    Shape.prototype.duplicate.call(this);
+
+    console.log('duplicate circle');
+}
+
+// so save the changes 
+// back in the console let's call c.duplicate()
+
+c.duplicate();
+// output:
+// "duplicate"
+// "duplicate circle"
+
+// so first we get the 'duplicate' message 
+// which COMES FROM THE IMPLEMENTATION OF DUPLICATE METHOD IN THE shapeObject 
+// and then after that we have duplicate circle
+
+function extend(Child, Parent) {
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+function Shape() {
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle() {
+}
+
+extend(Circle, Shape);
+
+Circle.prototype.duplicate = function () {
+    Shape.prototype.duplicate.call(this);
+
+    console.log('duplicate circle')
+}
+
+const c = new Circle();
+
+c.duplicate();
+
+
+
+
+// --------------------------------------------------
+// 4.6 Prototypal Inheritance - Polymorphism
+
+// so in the last lecture you learn about METHOD OVERRIDING 
+// WHICH BASICALLY MEANS RE-IMPLEMENTING A METHOD IN A CHILD OBJECT 
+
+// now THIS BRINGS US TO 
+// A VERY IMPORTANT AND POWERFUL CONCEPT IN OBJECT-ORIENTED PROGRAMMING 
+// CALLED POLYMORPHISM 
+
+// poly means many 
+// morph means form 
+// so POLYMORPHISM MEANS MANY FORMS 
+
+// IT'S AN EXTREMELY POWERFUL TECHNIQUE IN OBJECT-ORIENTED PROGRAMMING 
+// as I'm going to show you in a second 
+
+// so continuing from the example from the last lecture
+
+// I'm gonna define a new shape object called square 
+// so let's define a constructor square 
+
+function Square() {
+
+}
+
+// now just like the circle you want to have this square inherit from shape 
+// so we extend square with shape 
+
+extend(Square, Shape);
+
+// and then we're gonna redefine this duplicate method on the square object 
+// so Square.prototype.duplicate 
+// and then  let's change this to 'duplicate square'
+
+Square.prototype.duplicate = function () {
+    console.log('duplicate square');
+}
+
+// so basically WHAT WE HAVE NOW IS A SIMPLE HIERARCHY 
+// ON THE TOP WE HAVE THE SHAPE 
+// AND WE HAVE TWO DERIVATIVES OR CHILD OBJECTS CIRCLE AND SHAPE 
+
+// EACH OBJECT WILL PROVIDE A DIFFERENT IMPLEMENTATION OF THE DUPLICATE METHOD 
+
+// SO WE HAVE MANY IMPLEMENTATIONS OR MANY FORMS OF THE DUPLICATE METHOD 
+
+// THAT'S WHAT WE CALL **POLYMORPHISM**
+
+function extend(Child, Parent) {
+    Child.prototype = Object.create(Parent.prototype);
+    Child.prototype.constructor = Child;
+}
+
+function Shape() {
+}
+
+Shape.prototype.duplicate = function () {
+    console.log('duplicate');
+}
+
+function Circle() {
+}
+
+extend(Circle, Shape);
+
+Circle.prototype.duplicate = function () {
+    console.log('duplicate circle')
+}
+
+function Square() {
+}
+
+extend(Square, Shape);
+
+Square.prototype.duplicate = function () {
+    console.log('duplicate square')
+}
+
+const c = new Circle();
+const sq = new Square();
+
+c.duplicate();
+sq.duplicate();
+
+console.log(c.duplicate());
+console.log(sq.duplicate());
+// output:
+// duplicate circle
+// duplicate square
+
+// now WHY IS THIS SO POWERFUL? I'll show you 
+
+// so let's imagine we have an array of shape objects 
+// so let's define an array 
+// in this array I'm going to add two objects a circle and a square 
+// in this array I'm going to add two objects a circle and a square 
+
+const shapes = [
+    new Circle(),
+    new Square()
+];
+
+// now we can iterate over this array using for of loop 
+// so for let's shape of shapes 
+// and then call shape.duplicate
+
+for (let shape of shapes)
+    shape.duplicate();
+
+// depending on the type of the shape object 
+// a different implementation, or a different form of the duplicate method, will be caught
+
+// so if shape is a circle 
+// the implementation of duplicate in the circle object will be caught 
+// if it's a square 
+// a different implementation will be caught 
+
+// let's have a look 
+// save the changes 
+// look in the console 
+
+for (let shape of shapes)
+    console.log(shape.duplicate());
+
+// output:
+// duplicate circle
+// duplicate Square
+
+// why is this so powerful? 
+// well before object-oriented programming 
+// if you wanted to implement this logic we will have to write code like this 
+
+// so in this for loop we would have to check the type of each object 
+// let's say shape.type if it's a circle 
+// then perhaps we'll have a function somewhere else like duplicateCircle()
+// it would have to call that function
+
+// now this function is not part of any objects 
+// it's just a standalone function 
+// this is the non object-oriented way of writing code 
+
+for (let shape of shapes) {
+    if (shape.type === 'circle')
+        duplicateCircle();
+}
+
+// in object-oriented programming we encapsulate our variables and functions into objects 
+
+// now continuing with this implementation 
+// then we would have to check else if shape.type is a square 
+// then we'll have to call a different function duplicate Square
+// and we can have another if statement else duplicate shape
+
+for (let shape of shapes) {
+    if (shape.type === 'circle')
+        duplicateCircle();
+    else if (shape.type === 'square')
+        duplicateSquare();
+    else
+        duplicateShape();
+}
+
+// now this is a very simple program 
+// what if we had ten different types of shapes 
+// we would end up with eleven conditional statements in this block 
+
+// in contrast when we encapsulate variables and functions into objects 
+// and use inheritance 
+// we can execute many forms of a method using a single line of code 
+
+// so instead of all this (the if else block), we just call shape.duplicate
+
+for (let shape of shapes)
+    shape.duplicate();
+
+// isn't that beautiful
+
+// SO THAT'S POLYMORPHISM IN ACTION
+
+
+
+
+// --------------------------------------------------
+// 4.7 Prototypal Inheritance - When To Use Inheritance
+
+// so you have seen inheritance and polymorphism in action 
+// while inheritance is a great tool for solving the problem of code reuse
+// you have to be really careful about using it because 
+// it can make your source code complex and fragile 
+
+// so don't use inheritance just for the sake of using it 
+// especially in small projects 
+
+// as I've always emphasized in all my courses 
+// keep it simple and stupid 
+
+// start with simple objects 
+// and then if you see a number of these objects share similar features 
+// then perhaps you can encapsulate those features inside of a generic object 
+// and use inheritance 
+
+// but remember inheritance is not the only solution 
+// to enable code reuse there is another technique called composition 
+
+// which you're going to learn about soon 
+
+// so let's see the problem with inheritance 
+
+// here we have this animal object with two methods eat and walk 
+// and we have two objects that derive from animal 
+// person and dog 
+
+// now tomorrow we're gonna introduce a new object called goldfish 
+// that derives from animal 
+
+// our hierarchy is broken why because goldfish cannot walk 
+// it can swim 
+
+// so we got the hierarchy wrong and this is something that happens quite
+// often especially amongst inexperienced developers 
+
+// so to solve this problem we need to change our hierarchy 
+
+// on the top we should have the animal object with the eat method 
+// under that we're gonna have two objects mammal and fish 
+
+// mammals can walk 
+// fish can swim 
+
+// and then we can have person and dog derive from mammal
+// and goldfish derive from fish 
+
+// see what happened as a result of introducing a new kind of animal 
+// that is goldfish 
+
+// we had to change our hierarchy and now this hierarchy 
+// is more complex than what we had before
+
+// now what would happen if we had ten different types of animals 
+// this hierarchy would get more and more complex 
+// and we have to constantly go back and forth to determine 
+// the right place to implement a method 
+
+// so avoid creating inheritance hierarchies because
+// they are very fragile 
+
+// if you want to use inheritance keep to one level 
+// do not go more than one level of inheritance 
+
+// there is a famous saying that says 
+// "favour composition over inheritance" 
+
+// with composition instead of having a complex hierarchy like this 
+// we can compose a few objects together to create a new object 
+// and this technique gives us great flexibility 
+
+// so back to our previous example 
+// instead of using inheritance we can define various features 
+// for our animals as independent objects 
+
+// so we can have three objects like 
+// can walk 
+// can eat 
+// and 
+// can swim each
+
+// each of these objects are plain JavaScript 
+
+// objects with certain properties and methods 
+// now we want to have a person object 
+// okay we simply compose can walk and can eat to create a person object
+
+// tomorrow we want to introduce a goldfish 
+// awesome we can compose can eat and can swim together 
+// to produce a goldfish 
+
+// so we don't have a hierarchy and we can come up with 
+// any combination of these objects to create new objects in JavaScript 
+
+// we can use mix-ins to achieve composition 
+// and that's what you're gonna see in the next lecture
     </code></pre>
     <script src=prism.js></script>
 </body>
