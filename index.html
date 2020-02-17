@@ -14949,9 +14949,8 @@ for (let shape of shapes)
 // we can define various features for our animals as independent objects 
 
 // so we can have three objects like 
-// canWalk 
-// canEat 
-// canSwim 
+
+//  (canWalk)   (canEat)   (canSwim)
 
 // each of these objects are plain JavaScript objects 
 // with certain properties and methods 
@@ -14962,6 +14961,10 @@ for (let shape of shapes)
 // tomorrow we want to introduce a goldfish 
 // awesome, we can compose canEat and canSwim together 
 // to produce a goldfish 
+
+//  (canWalk)   (canEat)   (canSwim)
+
+// [ Person ]           [ Goldfish ]
 
 // so we don't have a hierarchy and we can come up with 
 // any combination of these objects to create new objects 
