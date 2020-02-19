@@ -14971,6 +14971,1166 @@ for (let shape of shapes)
 
 // in JavaScript we can use Mix-Ins to achieve composition 
 // and that's what you're gonna see in the next lecture
+
+
+
+
+// --------------------------------------------------
+// 4.8 Prototypical Inheritance - Mix Ins
+
+// all right let's start by defining a new object 
+
+// canEat we use the object literal syntax 
+// and in this object we add one method called eat 
+
+const canEat = {
+    eat: function () {
+        this.hunger--;
+        console.log('eating');
+    }
+};
+
+// here we can reduce the hunger, so this.hunger-- 
+// and do a simple console.log 'eating'
+
+// so we're defining one feature as an object 
+
+// now similarly we can define another feature so canWalk 
+// this time we're gonna add the walk method 
+// and simply do a console.log 'walking' 
+
+const canWalk = {
+    walk: function () {
+        console.log('walking');
+    }
+};
+
+// now we can compose these objects together 
+// to create a person that can eat and walk 
+
+// so in es6 we have a new method that is 
+
+Object.assign
+
+// and we can use this to copy the properties and methods 
+// from one object to another
+
+// so we pass an empty object as the target 
+// and then pass one or more source objects 
+
+// so if we pass canEat here 
+
+// this Object.assign will copy all the properties and methods 
+// that we have defined in canEat into this blank object 
+
+Object.assign({}, canEat);
+
+// now we can add more sources here 
+// so we can add canWalk as well 
+
+
+Object.assign({}, canEat, canWalk);
+
+// and with this our empty object will end up being the combination
+// of these two different objects 
+
+// so let's store that in person 
+// and log it on the console, now save the changes
+// so here's our person object with two methods eat and walk 
+
+const person = Object.assign({}, canEat, canWalk);
+console.log(person);
+// output:
+// { eat: [Function: eat], walk: [Function: walk] }
+
+// now if we're using a constructor function 
+// we can still use this technique
+
+// so let's define a constructor called person
+
+function Person() {
+
+}
+
+// here we can add any properties and methods specific to person objects 
+// and then after that instead of passing an empty object as the first argument here 
+// we can pass Person.prototype as the target object 
+// and we don't need the return value anymore
+
+Object.assign(Person.prototype, canEat, canWalk);
+
+// so we have basically modified the prototype of person 
+// and added the capability to eat and walk 
+
+// now next time we create a person object 
+// that person will have these capabilities 
+
+// so new person, save
+
+const person = new Person();
+console.log(person);
+
+// now here's a person object 
+// in its prototype we have to eat and walk methods 
+
+// Person
+// # __proto__:
+// ## eat: f ()
+// ## walk: f ()
+// ## constructor: f Person()
+// ## __proto__: Object
+
+// now let's say tomorrow we're gonna add two new objects in this application 
+// goldfish and duck 
+// both the goldfish and duck should have the capability to swim 
+
+// so we can define a new feature constant canSwim 
+// and here we add the swim method, very simple implementation 
+// console.log 'swim'
+
+const canSwim = {
+    swim: function () {
+        console.log('swim');
+    }
+};
+
+// and then we can define a new constructor like goldfish
+// and use Object.assign to modify the prototype for goldfish, so 
+
+Object.assign(Goldfish.prototype, canEat, canSwim);
+
+// this time we're gonna mix this object with canEat and canSwim 
+
+// so you can see composition or Mix-Ins gives us great flexibility 
+
+// so now let's create a new goldfish object 
+// constant goldfish we set it to a new goldfish 
+// and then log it on the console goldfish 
+
+const goldfish = new Goldfish();
+console.log(goldfish);
+
+// okay here's our goldfish 
+// and its prototype we have two methods eat and swim 
+
+const canEat = {
+    eat: function () {
+        this.hunger--;
+        console.log('eating');
+    }
+};
+
+const canWalk = {
+    walk: function () {
+        console.log('walking');
+    }
+};
+
+const canSwim = {
+    swim: function () {
+        console.log('swim');
+    }
+};
+
+function Person() {
+}
+
+Object.assign(Person.prototype, canEat, canWalk);
+
+const person = new Person();
+console.log(person);
+
+function Goldfish() {
+}
+
+Object.assign(Goldfish.prototype, canEat, canSwim);
+
+const goldfish = new Goldfish();
+console.log(goldfish);
+
+
+// now to make this code a bit more readable 
+// we can extract this logic this line 
+
+Object.assign(Goldfish.prototype, canEat, canSwim);
+
+// INTO A FUNCTION CALLED MIXIN 
+
+// so on the top let's define this 
+
+// function mixin, we add the target object here, 
+// and we'll have one or more sources 
+// now we don't want to add multiple parameters here 
+// like source1, source2 
+// because we don't know every time we want to use this function 
+// how many arguments we're gonna pass here 
+
+// so to solve this problem we can use the rest operator 
+// in es6 so we add only one parameter here sources 
+// and then use the rest operator which is three dots 
+// and this will collect all the arguments and turn them into an array
+
+function mixin(target, ...sources) { // rest operator
+
+}
+
+// now here we had Object.assign 
+// we pass the target 
+// now here sources is an array 
+// but Object.assign needs sources explicitly 
+// we cannot pass an array here 
+
+// so this time we can use the spread operator 
+// to spread an array into multiple arguments 
+// so the syntax is exactly the same but this time we call this operator spread operator 
+// because we are spreading an array into multiple objects 
+// so ...sources 
+
+function mixin(target, ...sources) { // ...rest operator, undefined number of arguments
+    Object.assign(target, ...sources); // ...spread operator, to spread array into multiple arguments
+}
+
+// now with this new mixin function 
+// we can simplify this code
+// instead of using Object.assign we can say 
+// mixin Person.prototype with canEat and canWalk
+
+mixin(Person.prototype, canEat, canWalk);
+
+// and similarly we can use mix in here 
+// and the end result will be exactly the same
+
+mixin(Goldfish.prototype, canEat, canSwim)
+
+// FINAL CODE
+function mixin(target, ...sources) {
+    Object.assign(target, ...sources);
+}
+
+const canEat = {
+    eat: function () {
+        this.hunger--;
+        console.log('eating');
+    }
+};
+
+const canWalk = {
+    walk: function () {
+        console.log('walking');
+    }
+};
+
+const canSwim = {
+    swim: function () {
+        console.log('swim');
+    }
+};
+
+function Person() {
+}
+
+mixin(Person.prototype, canEat, canWalk);
+
+const person = new Person();
+console.log(person);
+
+function Goldfish() {
+}
+
+mixin(Goldfish.prototype, canEat, canSwim);
+
+const goldfish = new Goldfish();
+console.log(goldfish);
+
+
+// --------------------------------------------------
+// 4.9 Prototypical Inheritance - Exercise - Prototypical Inheritance
+
+// all right now it's time for an exercise
+
+// I want you to design two objects one is HtmlElement 
+// and the other is HtmlSelectElement which represents a drop-down list
+
+// WE HAVE PROTOTYPICAL INHERITANCE BETWEEN 
+// HtmlSelectElement AND ITS PARENT which is HtmlElement 
+
+// now see how these objects behave 
+// I'm gonna define a constant and set it to a new HtmlElement 
+
+const e = new HtmlElement();
+
+// let's inspect this object 
+
+// HtmlElement {click: f}
+// # click: f ()                         click (instance/own method)
+// # __proto__:
+// ## focus: f ()                        focus (prototype method)
+// ## constructor: f HtmElement()
+// ## __proto__: Object
+
+// so in this object 
+// we have one method click 
+// in its prototype we have another method focus 
+
+// the implementation of these methods is very simple 
+// just a console.log statement 
+
+// what is important here 
+// is that we have one instance or own method
+// and one prototype method 
+
+// so start with this object, implement it, test it, make sure it works
+// so we can call e.click, and we get this message 'clicked'
+
+e.click();
+// output:
+// clicked
+
+// and we can call e.focus, and we get this message 'focused'
+
+e.focus();
+// output:
+// focused
+
+
+// once you have HtmlElement go ahead and create HtmlSelectElement 
+
+// let's see how that object behaves 
+// so I'm gonna define another constant set it to a new HtmlSelectElement
+
+const s = new HtmlSelectElement();
+
+// now here in the constructor we can optionally pass an array of items
+
+const s = new HtmlSelectElement([1, 2, 3]);
+
+// but we don't have to 
+// if we don't pass anything here 
+// it will be initialized to an empty array 
+
+// let's inspect this object 
+
+// HtmlSelectElement {items: Array(1), addItem: function, removeItem: f}
+// # addItem: f (item)
+// # items: []
+// # removeItem: f (item)
+// # __proto__: HtmlElement
+
+// so here we have this items property which is initialized to an empty array 
+// we also have two methods addItem and removeItem 
+
+// I can call s.addItem and add 1 here 
+s.addItem(1)
+
+// let's add 2 as well 
+s.addItem(2)
+
+// now we remove 2 
+s.removeItem(2)
+
+// let's inspect it one more time 
+// so in this items array we only have one item 1 
+
+// HtmlSelectElement {items: Array(1), addItem: function, removeItem: f}
+// # addItem: f (item)
+// # items: [1]
+// # removeItem: f (item)
+// # __proto__: HtmlElement
+
+// ok now what is important here is that this HtmlSelectElement INHERITS FROM HtmlElement 
+
+// so let's look at its prototype 
+
+// HtmlSelectElement {items: Array(1), addItem: function, removeItem: f}
+// # addItem: f (item)
+// # items: []
+// # removeItem: f (item)
+// # __proto__: HtmlElement
+// ## click: f ()
+// ## __proto__: Object
+// ### focus: f ()
+// ### constructor: f HtmlElement ()
+// ### __proto__: Object
+
+// THIS PROTOTYPE IS AN INSTANCE OF HtmlElement object 
+
+// remember our HTML element objects have two methods 
+// one is click which is an instance or own method 
+// and the other is focus which is a prototype method 
+
+// so this is the tricky part of this exercise
+// I want you to pay great attention to this part 
+
+// so do not use the extend function that we created earlier in this section 
+
+// I want you to MANUALLY SET THE PROTOTYPE for HtmlSelectElement 
+// YOU SHOULD SET THAT TO AN INSTANCE OF THE HtmlSelectElement object 
+// BECAUSE THE CLICK METHOD IS ON THE INSTANCE 
+
+// IF YOU SET THE PROTOTYPE OF HtmlSelectElement TO THE PROTOTYPE OF HtmlElement 
+// YOU WOULD ONLY GET THE FOCUS METHOD BECAUSE THIS IS DEFINED ON THE PROTOTYPE 
+
+// so go ahead spend about 20 to maximum 30 minutes on this exercise 
+// and next you will see my solution
+
+
+// Baz Attempt 1
+
+// HtmlElement constructor function 
+// with click function (instance/own method)
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    };
+}
+
+// assigning focus function (prototype method) to the prototype of HtmlElement
+HtmlElement.prototype.focus = function () {
+    console.log('focused');
+};
+
+// construct new HtmlElement object
+const e = new HtmlElement();
+
+// call click and focus functions
+e.click();
+e.focus();
+
+// HtmlSelectElement constructor function
+// with items property, addItem & removeItem methods
+function HtmlSelectElement(input) {
+
+    if (typeof input === 'undefined')
+        this.items = [];
+    else {
+        this.items = [];
+        for (let value in input)
+            this.items.push(input[value]);
+    }
+
+    this.addItem = function (value) {
+        this.items.push(value);
+    };
+    this.removeItem = function (value) {
+        this.items.pop(value);
+    };
+}
+
+// HtmlSelectElement.prototype = Object.create(HtmlElement.prototype); // reset the prototype
+// HtmlSelectElement.prototype.constructor = HtmlSelectElement; // reset the constructor (aswell)
+
+// function extend(Child, Parent) {
+//     Child.prototype = Object.create(Parent.prototype);
+//     Child.prototype.constructor = Child;
+// }
+// extend(HtmlSelectElement, HtmlElement);
+
+// Object.assign(HtmlSelectElement.prototype, HtmlElement);
+
+// I COULDN'T WORK OUT HOW TO: 
+// "MANUALLY SET THE PROTOTYPE FOR HtmlSelectElement TO AN INSTANCE OF THE HtmlSelectElement OBJECT"
+
+const s = new HtmlSelectElement();
+s.addItem(1);
+s.addItem(2);
+s.removeItem(2);
+console.log(s.items);
+
+s.click();
+s.focus();
+
+
+
+// Solution
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    }
+}
+
+HtmlElement.prototype.focus = function () {
+    console.log('focused');
+}
+
+function HtmlSelectElement(items = []) { // didn't know you can do this in the parameter
+    this.items = items;
+
+    this.addItem = function (item) {
+        this.items.push(item);
+    }
+
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1); // used splice method
+    }
+}
+
+// this is how you 
+// MANUALLY SET THE PROTOTYPE FOR HtmlSelectElement TO AN INSTANCE OF THE HtmlSelectElement OBJECT
+HtmlSelectElement.prototype = new HtmlElement();
+
+
+
+
+// --------------------------------------------------
+// 4.11 Prototypical Inheritance - Exercise Solution
+
+// alright now let's take a look at my solution 
+
+// so here we have this HTML element constructor function 
+// we have a simple method here click 
+
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    }
+}
+
+// we also have this focus method which is defined on the prototype of HtmlElement 
+
+HtmlElement.prototype.focus = function () {
+    console.log('focused');
+}
+
+// so this is our Parent object 
+
+// now below that we have another constructor HtmlSelectElement
+// note that I have initialized this items parameter to an empty array 
+
+// this is something that we can do in es6 
+// before es6 we had to do something like this so if items is defined 
+// we would use that otherwise we would use an empty array 
+
+// now with es6 we can initialize the parameter 
+// so this syntax is cleaner 
+// so we set the items array 
+
+
+function HtmlSelectElement(items = []) {
+    this.items = items;
+
+}
+
+// here we also have two methods addItem and removeItem 
+// the implementations are pretty straightforward
+
+// so in add item I simply push an item to this array 
+// and in remove item I simply use the splice method 
+// to delete an item at the given position 
+
+// this is just basic JavaScript 
+
+function HtmlSelectElement(items = []) {
+    this.items = items;
+    // this.items = items || [];
+    // pre-ES6 way,
+    // if items is defined, set items to it, otherwise use an empty array
+    // cannot use items = [] as a parameter in the Constructor Function
+
+    this.addItem = function (item) {
+        this.items.push(item);
+    }
+
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1);
+    }
+
+}
+
+// now let's look at the important and tricky part of this exercise 
+
+HtmlSelectElement.prototype = new HtmlElement();
+
+// that's the tricky part 
+
+// WE SET THE PROTOTYPE OF THIS HtmlSelectElement TO AN INSTANCE OF AN HtmlElement object 
+
+HtmlSelectElement.prototype = new HtmlElement();
+
+// earlier in this section we used a different approach 
+// so we used Object.create and passed let's say HtmlElement.prototype
+
+HtmlSelectElement.prototype = Object.create(HtmlElement.prototype);
+
+// but THIS WILL NOT WORK IN THE CURRENT IMPLEMENTATION 
+
+// let me explain why 
+
+// here Object.create will create a new object 
+// and set the prototype of that object to the prototype of HtmlElement
+
+// for discussions sake 
+// let's call the prototype of HtmlElement as baseHtmlElement
+
+//                                            [baseHtmlElement]
+HtmlSelectElement.prototype = Object.create(HtmlElement.prototype);
+
+// so this is an object that has only one method 
+// look here is a prototype of HtmlElement it's an object with only one method focus 
+// so click is not there right 
+
+// so when we use Object.create 
+// we create a new object and the prototype of that object would be baseHtmlElement
+// which has the focus method 
+
+// now we can call this object that is returned here 
+// let's call that baseHtmlSelectElement 
+
+// [baseHtmlSelectElement]                     [baseHtmlElement]
+HtmlSelectElement.prototype = Object.create(HtmlElement.prototype);
+
+// so when we create an instance of HtmlSelectElement 
+// its prototype will be baseHtmlSelectElement 
+// which is an empty object 
+// that is linked to baseHtmlElement as its prototype 
+
+// let's have a look at this on the console
+// so I'm going to create an HtmlSelectElement 
+// let's inspect this 
+
+const s = new HtmlSelectElement();
+
+// s
+// HtmlSelectElement {items: Array(0), addItem: f, removeItem: f}
+// # addItem: f (item)
+// # items: []
+// # removeItem: f (item)
+// # __proto__: HtmlElement
+// ## __proto__: Object  <--- empty Object returned from Object.create
+
+
+// so here is the prototype 
+// this is an empty object 
+// this is an empty object that is returned from Object.create
+
+// okay now Object.create uses what we pass here 
+
+//                      [here]
+// Object.create(HtmlElement.prototype)
+
+// as the prototype for that object 
+
+// in this case the prototype is baseHtmlElement or HtmlElement.prototype 
+// which is an object with a single method focus right 
+
+// so back in the console here 
+// the prototype of HtmlSelectElement is an empty object 
+// it doesn't have anything 
+// but its prototype is the prototype of HtmlElement 
+// where we have the focus method 
+
+// okay so with this implementation 
+// we don't inherit the click method in HtmlSelectElement 
+
+// now to fix this 
+// instead of using Object.create to create an empty object 
+// that has HtmlElement.prototype as its prototype 
+
+// we need to new up an HtmlElement object
+
+HtmlSelectElement.prototype = new HtmlElement();
+
+// because in this object we have the click method 
+// and this object has its own prototype 
+// where we have defined the focus method, right 
+
+// now let me remove these comments 
+// let's go back in the console create another HtmlSelectElement
+
+const s = new HtmlSelectElement();
+
+// s
+// HtmlSelectElement {items: Array(0), addItem: f, removeItem: f}
+// # addItem: f (item)
+// # items: []
+// # removeItem: f (item)
+// # __proto__: HtmlElement
+// ## click: f ()               <-- this is an instance
+// ## __proto__:                <-- of HtmlElement object
+// ### focus: f ()
+// ### constructor: f HtmlElement()
+// ### __proto__: Object
+
+// so now here's the prototype this is an instance of HtmlElement object 
+// we have the click method 
+// and in the prototype we have the focus method 
+
+// so with this we can click a select element 
+
+s.click();
+
+// we can also focus it
+
+s.focus();
+
+// now technically here I should also have set the constructor 
+// so HtmlSelectElement.prototype.constructor we set this to HtmlSelectElement
+
+HtmlSelectElement.prototype = new HtmlElement();
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+// why did I set it to HtmlSelectElement 
+// because I told you that 
+// this expression:
+HtmlSelectElement.prototype.constructor
+
+// is kind of similar to:
+new HtmlSelectElement()
+
+// so we can create an instance of HtmlSelectElement like this 
+new HtmlSelectElement()
+
+// or like this 
+new HtmlSelectElement.prototype.constructor()
+
+// obviously we're not going to use this approach 
+// but in your applications if you have a function where you get a constructor dynamically
+// and you want to create an instance of an object based on that constructor 
+// then you have to re-set the constructor property 
+
+// now in the next section when we get to ES6 you will see that 
+// implementing inheritance is far easier in es6 
+// you don't have to worry about this complexity 
+
+// okay so that brings us to the end of this exercise
+
+// FINAL CODE
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    }
+}
+
+HtmlElement.prototype.focus = function () {
+    console.log('focused');
+}
+
+function HtmlSelectElement(items = []) {
+    this.items = items;
+
+    this.addItem = function (item) {
+        this.items.push(item);
+    }
+
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1);
+    }
+}
+
+HtmlSelectElement.prototype = new HtmlElement();
+
+
+
+
+// --------------------------------------------------
+// 4.12 Prototypical Inheritance - Exercise: Polymorphism
+
+// all right now the second exercise 
+
+// continuing from the last exercise 
+// I want you to extend HtmlSelectElement 
+// and implement a render method
+
+// so here I'm gonna define an HtmlSelectElement
+// and initialize it with an array of 3 items 
+
+const s = new HtmlSelectElement([1, 2, 3]);
+
+// now
+
+s.render();
+// output:
+// "
+// <select>
+//     <option>1</option>
+//     <option>1</option>
+//     <option>1</option>
+// </select>"
+
+// this is what we get a select element with 3 options
+
+// now similarly I want you to 
+// CREATE AN HtmlImageElement THAT INHERITS FROM HtmlElement 
+
+// so it can be clicked 
+// it can be focused 
+// but it also has its own render method 
+
+// so let's create an image here new HTML image element 
+
+const img = new HtmlImageElement();
+
+// now here we can optionally pass the source or the address of the image 
+// I'm not gonna set that yet 
+
+// let's inspect this element 
+
+// HtmlImageElement {src: undefined, render: f}
+// # render: f ()
+// # src: undefined
+// # __proto__: HtmlElement
+
+// so here we have a source property which is undefined 
+// and the render method 
+
+// you can see it's prototype
+
+// HtmlImageElement {src: undefined, render: f}
+// # render: f ()
+// # src: undefined
+// # __proto__: HtmlElement
+// ## click: f ()
+// ## constructor: f HtmlImageElement(src)
+// ## __proto__:
+// ### focus: f ()
+// ### constructor: f HtmlElement()
+// ### __proto__: Object
+
+// so it inherits from an instance of HtmlElement 
+// it has the click method as well as the focus method 
+
+// so now I'm gonna set img.src to http whatever it doesn't really matter
+
+img.src = "http//";
+
+// and call img.render()
+
+img.render();
+// output:
+// "<img src="http://" />"
+
+// so we get an image element in HTML 
+
+// once you do this 
+// then I want you to create an array of elements 
+// so here we have one select element and one image element
+
+// then iterate over this array of elements and render them each 
+
+const elements = [
+    new HtmlSelectElement([1, 2, 3]),
+    new HtmlImageElement('http://')
+];
+
+for (let element of elements)
+    console.log(element.render());
+
+// output:
+// <select>
+//    <option>1</option>
+//    <option>2</option>
+//    <option>3</option>
+// </select>
+// <img src="http://" />
+
+// note that here my render method is returning a string it's not doing a console.log
+// it's not the responsibility of this object 
+
+// we don't want to couple this render method with console.log 
+// we just want the HTML representation of an element 
+// and somewhere else we decide what to do with that HTML representation 
+
+// maybe we want to add it to Document Object Model
+// or maybe we want to log it on the console 
+// that's why we shouldn't use console.log inside of the render method 
+
+// so this is your polymorphism exercise 
+
+// we have different objects they all have the same parent 
+// they all have a render method
+// but the render method behaves differently
+// we have different forms or multiple forms of the render method 
+// that's what we call polymorphism 
+
+// so save the changes back in the console 
+// that's what you should get
+
+
+
+
+
+// --------------------------------------------------
+// 4.13 Prototypical Inheritance - Exercise: Polymorphism - Solution
+
+// so here's my implementation of the HtmlImageElement object 
+
+// we have this constructor that receives a source parameter 
+// here we set the source property 
+
+// and we also define the render method 
+// note that here to return this HTML markup I'm using a template string 
+
+function HtmlImageElement(src) {
+    this.src = src;
+
+    this.render = function () {
+        return `<img src="${this.src}" />`
+    }
+}
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+// so instead of a single or double quote 
+// I'm using the back tick character 
+// which is the character before number 1 on your keyboard 
+// so this is part of es6 and it allows us to pass arguments to this string 
+
+// so here note that i have this argument indicated by a dollar sign and curly braces 
+// so what we have inside of these curly braces 
+// in this case this that source will be dynamically placed into this string at runtime
+
+// this is much cleaner than code like this 
+// return image source then we concatenate this with this 
+// that's worse then concatenate again 
+// now here I have to remember that I use single quote so I add double quote to terminate this 
+// source attribute and then add a slash and angle brackets 
+// look this is really ugly 
+
+// so use template strings in es6 that's much cleaner 
+// and to pass arguments use a dollar sign and curly braces 
+
+// then whatever you put here will be placed into the string at runtime 
+
+// now there is a more advanced version of a template string 
+// I'm gonna show you in a second 
+
+// so let's go to our HtmlSelectElement object 
+
+function HtmlSelectElement(items = []) {
+    //...
+
+    this.render = function () {
+        return `
+        <select>${this.items.map(item => `
+            <option>${item}</option>`).join('')}
+        </select>`;
+    }
+}
+HtmlSelectElement.prototype = new HtmlElement();
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+
+// this is the other render method 
+
+// so here we're returning a template string 
+
+// inside of this template string we have the Select element 
+// but you want to render multiple option elements 
+// so how can we achieve this 
+
+// how we can add a loop inside of a template string 
+
+// so note that here I have an argument 
+// right here I'm referencing this.items which is our array of items 
+
+// I'm using the map method in es6 
+// so we can get each item in this array and map or convert it to something else 
+
+this.items.map();
+
+// so here this map method takes an arrow function 
+// which is again another new feature in es6 
+
+this.items.map(item => `<option>${item}</option>`);
+
+// so in case you are not familiar with arrow functions this is how they work
+
+// let's imagine I have a function that takes an item 
+// and returns a template string like this 
+
+// so I get the item and convert it to a string with option and slash option 
+// and in the middle I'm gonna add an argument where I render the item right 
+
+// let's use a function expression 
+// so I'm gonna define a constant called render
+// and set it to this function expression 
+
+function render(item) {
+    return `<option>${item}</option>`;
+}
+
+// so we get rid of the function keyword 
+// we add the parameters here 
+// and to separate them from the body of the function we use a fat arrow 
+
+const render = (item) => {
+    return `<option>${item}</option>`;
+}
+
+// now if you have only a single parameter we can also remove the parentheses 
+// and if you have a single return statement here 
+// we can make this code even shorter we can get rid of the return keyword 
+// as well as the curly braces 
+// so put everything in one line
+
+const render = item => `<option>${item}</option>`;
+
+// this is what we call an arrow function 
+// we take an item and map it to a string like this 
+
+// now I have used this inside of my template string here 
+// so here after the Select element I have an argument in the template string 
+// inside this argument I have this expression 
+
+return `
+<select>
+    ${this.items.map(item => `<option>${item}</option>`).join('')}
+</select>`;
+
+// so I'm calling the map method on the array 
+
+this.items.map();
+
+// and as an argument I'm passing an arrow function item goes to this template string 
+
+this.items.map(item => `<option>${item}</option>`);
+
+// so we can have a template string inside of another template string 
+
+// now in this template string we have option item an option 
+// this is exactly what we have here 
+
+// now this is the end of the map method 
+// map basically returns an array 
+// so we get an array of items and map them to another array 
+// that's an array of strings "options"
+
+// right now we want to combine all the elements in this array using an empty string
+
+// if you don't use the join method here 
+// when this array is converted to string
+// we will end up getting a comma after each option 
+// so to solve that problem 
+// we combine all the elements in the array 
+// using the join method with the parameter '' empty string 
+
+this.items.map(item => `<option>${item}</option>`).join('');
+
+// okay so that's a more advanced usage of the template strings in es6 
+
+// I hope you enjoyed this lecture and thank you for watching
+
+
+// Baz Attempt 1
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    }
+}
+
+HtmlElement.prototype.focus = function () {
+    console.log('focused');
+}
+
+function HtmlSelectElement(items = []) {
+    this.items = items;
+
+    this.addItem = function (item) {
+        this.items.push(item);
+    }
+
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1);
+    }
+
+    // HtmlSelectElement render function (method)
+    this.render = function () {
+        // baz hacky way to output, but it works
+        output = ``;
+        output += `<select>\n`;
+        for (let item in this.items) {
+            output += `   <option>${item}</option>\n`;
+        }
+        output += `</select>`;
+        return output;
+    }
+}
+
+HtmlSelectElement.prototype = new HtmlElement();
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+
+// HtmlImageElement constructor (src parameter)
+function HtmlImageElement(src) { // i made this src = undefined, for defaulting
+    // has src property
+    this.src = src;
+
+    // has render function (method)
+    this.render = function () {
+        return `<img src="${this.src}" />`;
+    }
+}
+
+// set the HtmlImageElement as an INSTANCE of a HtmlElement Object
+HtmlImageElement.prototype = new HtmlElement();
+// re-set the constructor(?)
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+
+const elements = [
+    new HtmlSelectElement([1, 2, 3]),
+    new HtmlImageElement('http://')
+];
+
+for (let element of elements)
+    console.log(element.render());
+
+
+
+// Solution
+function HtmlElement() {
+    this.click = function () {
+        console.log('clicked');
+    }
+}
+
+HtmlElement.prototype.focus = function () {
+    console.log('focued');
+}
+
+function HtmlSelectElement(items = []) {
+    this.items = items;
+
+    this.addItem = function (item) {
+        this.items.push(item);
+    }
+
+    this.removeItem = function (item) {
+        this.items.splice(this.items.indexOf(item), 1);
+    }
+
+    this.render = function () {
+        return `
+        <select>${this.items.map(item => `
+            <option>${item}</option>`).join('')}
+        </select>`;
+    }
+}
+HtmlSelectElement.prototype = new HtmlElement();
+HtmlSelectElement.prototype.constructor = HtmlSelectElement;
+
+function HtmlImageElement(src) {
+    this.src = src;
+
+    this.render = function () {
+        return `<img src="${this.src}" />`
+    }
+}
+HtmlImageElement.prototype = new HtmlElement();
+HtmlImageElement.prototype.constructor = HtmlImageElement;
+
+const elements = [
+    new HtmlSelectElement([1, 2, 3]),
+    new HtmlImageElement('http://')
+];
+
+for (let element of elements)
+    console.log(element.render());
+
+
+
+
+// --------------------------------------------------
+// 5.1 ES6 Classes - ES6 Classes
     </code></pre>
     <script src=prism.js></script>
 </body>
